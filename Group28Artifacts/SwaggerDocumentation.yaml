@@ -1,0 +1,428 @@
+---
+openapi: "3.0.2"
+info:
+  title: "Blood Bank Management System API"
+  description: "Get information about the Blood Banks, Blood Donors or Blood Donation\
+    \ Events for your city. You can filter the information by blood group or location."
+  contact:
+    name: "Blood Bank Management System Support"
+    url: "https://bbms.com/aboutUs"
+    email: "utkarshaditya01@gmail.com"
+  version: "1.0.0"
+servers:
+- url: "http://utkarshaditya01.pythonanywhere.com/bloodBankManagementSystem"
+- url: "https://virtserver.swaggerhub.com/utkarshaditya02/Blood_Bank_Management_System/1.0.0"
+  description: "SwaggerHub API Auto Mocking"
+security:
+- app_id: []
+tags:
+- name: "Blood Bank"
+  description: "Everything about the Blood Banks"
+- name: "Donor Or Receiver"
+  description: "Everything about the users(donors/receivers)"
+- name: "Blood Donation Event"
+paths:
+  /bloodBanks:
+    get:
+      tags:
+      - "Blood Bank"
+      summary: "Registered blood banks."
+      description: "Access list of all blood banks which have registered on the website."
+      operationId: "getBloodBanks"
+      responses:
+        "200":
+          description: "All the Blood Banks"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BloodBank"
+    put:
+      tags:
+      - "Blood Bank"
+      summary: "Update an existing Blood Bank"
+      operationId: "updateBloodBank"
+      requestBody:
+        $ref: "#/components/requestBodies/BloodBank"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Blood Bank Not found"
+        "405":
+          description: "Validation exception"
+    post:
+      tags:
+      - "Blood Bank"
+      summary: "Add a new blood bank."
+      operationId: "registerBloodBank"
+      requestBody:
+        $ref: "#/components/requestBodies/BloodBank"
+      responses:
+        "200":
+          description: "Successfully registered blood bank"
+        "405":
+          description: "Invalid input"
+  /bloodBanks/{bloodBankID}:
+    delete:
+      tags:
+      - "Blood Bank"
+      summary: "Deletes a Blood Bank"
+      operationId: "deleteBloodBank"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "bloodBankID"
+        in: "path"
+        description: "Blood Bank ID to delete"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "integer"
+          format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Blood Bank not found"
+  /bloodBanks/findByCity:
+    get:
+      tags:
+      - "Blood Bank"
+      summary: "Find Blood Banks by city"
+      operationId: "findBloodBanksByCity"
+      parameters:
+      - name: "city"
+        in: "query"
+        description: "City name that needs to be considered for filtering"
+        required: true
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BloodBank"
+            application/xml:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BloodBank"
+        "400":
+          description: "Invalid city value"
+  /donors:
+    get:
+      tags:
+      - "Donor Or Receiver"
+      summary: "Registered Donors."
+      description: "Access list of all donors who have registered on the website."
+      operationId: "getDonor"
+      responses:
+        "200":
+          description: "All the Donors"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/DonorOrReceiver"
+    put:
+      tags:
+      - "Donor Or Receiver"
+      summary: "Update an existing Donor or Receiver"
+      operationId: "updateDonorOrReceiver"
+      requestBody:
+        $ref: "#/components/requestBodies/DonorOrReceiver"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Donor or Receiver Not found"
+        "405":
+          description: "Validation exception"
+    post:
+      tags:
+      - "Donor Or Receiver"
+      summary: "Add a new Donor or Receiver."
+      operationId: "registerDonorOrReceiver"
+      requestBody:
+        $ref: "#/components/requestBodies/DonorOrReceiver"
+      responses:
+        "200":
+          description: "Successfully registered Donor or Receiver"
+        "405":
+          description: "Invalid input"
+  /donors/{donorOrReceiverID}:
+    delete:
+      tags:
+      - "Donor Or Receiver"
+      summary: "Deletes a Donor Or Receiver"
+      operationId: "deleteDonorOrReceiver"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "donorOrReceiverID"
+        in: "path"
+        description: "Donor Or Receiver ID to delete"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "integer"
+          format: "int64"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Donor Or Receiver not found"
+  /donors/findByBloodGroup:
+    get:
+      tags:
+      - "Donor Or Receiver"
+      summary: "Find Donors by Blood Group"
+      operationId: "findDonorsByBloodGroup"
+      parameters:
+      - name: "bloodGroup"
+        in: "query"
+        description: "Blood Group that needs to be considered for filtering"
+        required: true
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/DonorOrReceiver"
+            application/xml:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/DonorOrReceiver"
+        "400":
+          description: "Invalid Blood Group value"
+  /bloodDonationEvents:
+    get:
+      tags:
+      - "Blood Donation Event"
+      summary: "Blood Donation Events."
+      description: "Access list of all blood donation events which have been registered\
+        \ on the website."
+      operationId: "getBloodDonationEvents"
+      responses:
+        "200":
+          description: "All the Blood Donation Events"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/BloodDonationEvent"
+components:
+  schemas:
+    BloodBank:
+      type: "object"
+      properties:
+        bloodBankID:
+          type: "integer"
+          format: "int64"
+          example: 1
+        name:
+          type: "string"
+          example: "Indian Red Cross Society"
+        state:
+          type: "string"
+          example: "Maharashtra"
+        district:
+          type: "string"
+          example: "Raigad"
+        city:
+          type: "string"
+          example: "Mumbai"
+        category:
+          type: "string"
+          example: "Government"
+        bloodBankAdmin:
+          $ref: "#/components/schemas/BloodBankAdmin"
+        ConctactNo:
+          type: "string"
+          example: "7045500853"
+        Email:
+          type: "string"
+          example: "IRCShelpline@gmail.com"
+        PostalAddress:
+          type: "string"
+          example: "Plot No 1&2, Sector-18, Kamothe, Mumbai"
+        BloodPackets:
+          type: "array"
+          description: "Displays the blood packets in the Blood Bank"
+          items:
+            $ref: "#/components/schemas/BloodPacket"
+    BloodPacket:
+      type: "object"
+      properties:
+        packetID:
+          type: "string"
+          example: "121A"
+        bloodGroup:
+          type: "string"
+          example: "O+"
+        expiryDate:
+          type: "string"
+          format: "yyyy-mm-dd"
+          example: "2021-02-03"
+        quantity:
+          type: "number"
+          description: "Should be in milliliters"
+          format: "float"
+          example: 5E+2
+    BloodDonationEvent:
+      type: "object"
+      properties:
+        organizedBy:
+          $ref: "#/components/schemas/BloodBank"
+        date:
+          type: "string"
+          format: "yyyy-mm-dd"
+          example: "2021-02-03"
+        venue:
+          type: "string"
+          example: "Plot No 1&2, Sector-18, Kamothe, Mumbai"
+        time:
+          type: "string"
+          format: "starting time - ending time"
+          example: "11:00:00 - 14:00:00"
+        campName:
+          type: "string"
+          example: "Go Red"
+        state:
+          type: "string"
+          example: "Maharashtra"
+        district:
+          type: "string"
+          example: "Raigad"
+        contactNo:
+          type: "string"
+          example: "7666783437"
+    User:
+      required:
+      - "contactno"
+      - "email"
+      - "password"
+      - "username"
+      type: "object"
+      properties:
+        username:
+          type: "string"
+          example: "user01"
+        firstName:
+          type: "string"
+          example: "Utkarsh"
+        lastName:
+          type: "string"
+          example: "Aditya"
+        email:
+          type: "string"
+          format: "email"
+          example: "utkarshaditya@gmail.com"
+        password:
+          type: "string"
+          format: "password"
+        contactno:
+          type: "string"
+          example: "7666785853"
+        isBloodBankAdmin:
+          type: "boolean"
+          default: false
+        isDonorOrReceiver:
+          type: "boolean"
+          default: false
+    DonorOrReceiver:
+      required:
+      - "bloodGroup"
+      - "city"
+      - "dob"
+      type: "object"
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        donorOrReceiverID:
+          type: "integer"
+          example: 1
+        gender:
+          type: "string"
+          example: "Male"
+        dob:
+          type: "string"
+          format: "yyyy-mm-dd"
+          example: "1999-09-09"
+        address:
+          type: "string"
+          example: "Eden Gardens, Sector - 5, Kharghar"
+        city:
+          type: "string"
+          example: "Navi Mumbai"
+        state:
+          type: "string"
+          example: "Maharashtra"
+        bloodGroup:
+          type: "string"
+          example: "A+"
+        noOfDonations:
+          type: "integer"
+          example: 2
+    BloodBankAdmin:
+      type: "object"
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+  requestBodies:
+    DonorOrReceiver:
+      description: "Blood Bank that needs to be added to the database"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/DonorOrReceiver"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/DonorOrReceiver"
+      required: true
+    BloodBank:
+      description: "Blood Bank that needs to be added to the database"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/BloodBank"
+        application/xml:
+          schema:
+            $ref: "#/components/schemas/BloodBank"
+      required: true
+  securitySchemes:
+    app_id:
+      type: "apiKey"
+      description: "API key to authorize requests."
+      name: "userApiAccessid"
+      in: "header"
