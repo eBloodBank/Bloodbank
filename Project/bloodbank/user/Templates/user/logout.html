@@ -52,11 +52,7 @@
 </head>
 {{ form.errors }}
 <div class="container">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-         <button type="submit" class="registerbtn">Register</button>
-    </form>
-    <p>Already Have an account? <a href="{% url 'login' %}">Login</a></p>
+    <h1>You have been logged out.</h1>
+    <p>Login Again? <a href="{% url 'login' %}">Login</a></p>
 </div>
 

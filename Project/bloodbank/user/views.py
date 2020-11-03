@@ -12,7 +12,7 @@ def register_view(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            # return redirect('login_view')
+            return redirect('login')
     else:
         form = RegistrationForm()
     context = {'form': form}
