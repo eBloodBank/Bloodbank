@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from bloodbank.user import views as account_views
 
+
 urlpatterns = [
     path('', include('website_pages.urls')),
     path('admin/', admin.site.urls),
