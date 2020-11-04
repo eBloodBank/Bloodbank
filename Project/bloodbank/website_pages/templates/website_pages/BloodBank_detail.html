@@ -4,3 +4,8 @@
 {% for bloodpacket in object.BloodPackets.all %}
     <h3> {{bloodpacket.packetID}} </h3>
 {% endfor %}
+
+{% if object.BloodBankAdmin == user %}
+    <h3><a href="{% url 'bloodbank-update' object.id %}">Update</a></h3>
+    <h3><a href="{% url 'bloodbank-delete' object.id %}">Delete</a></h3>
+{% endif %}
