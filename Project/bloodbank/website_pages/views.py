@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import BloodBank, BloodPacket
+from .models import BloodBank, BloodPacket, BloodDonationEvent
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.forms.models import inlineformset_factory
 from django.urls import reverse
@@ -10,6 +10,25 @@ def home(request):
 
 def about(request):
     return render(request,'website_pages/about.html')
+
+class BloodDonationEventListView(ListView):
+    model = BloodDonationEvent
+    template_name = 'website_pages/blooddonationlist.html'
+    context_object_name = 'bloodDonationEvents'
+    ordering = ['date']
+
+class BloodDonationEventCreateView(LoginRequiredMixin, CreateView):
+    model = BloodDonationEvent
+    fields = ['date', 'venue', 'time', 'campName', 'state', 'district', 'contactNo']
+    
+    def form_valid(self, form):
+        userz = self.request.user
+        BloodBankz = BloodBank.objects.filter(BloodBankAdmin=userz).first()
+        form.instance.organizedBy = BloodBankz
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse('bloodDonationEvent-list')
 
 class BloodBankListView(ListView):
     model = BloodBank
@@ -91,7 +110,7 @@ class BloodBankUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class BloodBankDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = BloodBank
     success_url = '/'
-    
+
     def test_func(self):
         BloodBankz = self.get_object()
         if self.request.user == BloodBankz.BloodBankAdmin:

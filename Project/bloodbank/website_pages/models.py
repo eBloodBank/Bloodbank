@@ -26,4 +26,14 @@ class BloodBank(models.Model):
     email = models.CharField(max_length=50, unique=True)
     PostalAddress = models.CharField(max_length=100)
     BloodPackets = models.ManyToManyField(BloodPacket)
-    BloodBankAdmin = models.ForeignKey(User,on_delete=models.CASCADE,default=1)
+    BloodBankAdmin = models.ForeignKey(User,on_delete=models.CASCADE,default="1")
+
+class BloodDonationEvent(models.Model):
+    organizedBy = models.ForeignKey(BloodBank,on_delete=models.CASCADE)
+    date = models.DateField()
+    venue = models.CharField(max_length=70)
+    time = models.CharField(max_length=70)
+    campName = models.CharField(max_length=70)
+    state = models.CharField(max_length=70)
+    district = models.CharField(max_length=70)
+    contactNo = models.CharField(max_length=15)
