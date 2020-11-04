@@ -2,8 +2,11 @@
     <title>home</title>
     <body>
         <h1>HOMe page</h1>
+        <h3><a href="{% url 'bloodbank-create' %}">Create BB</a></h3>
+        <h3><a href="{% url 'bloodbank-list' %}">List of BB</a></h3>
         {% if request.user.is_authenticated %}
         <li><a href="{% url 'logout' %}">Logout</a></li>
+        <h3><a href="{% url 'bloodbank-create' %}">Create BB</a></h3>
         {% else %}
         <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="{% url 'login' %}">Login</a></li>
