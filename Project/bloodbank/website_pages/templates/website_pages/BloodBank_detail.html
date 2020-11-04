@@ -1,0 +1,6 @@
+<h1> {{object.name}} </h1>
+
+<h3> {{object.state}} </h3>
+{% for bloodpacket in object.BloodPackets.all %}
+    <h3> {{bloodpacket.packetID}} </h3>
+{% endfor %}

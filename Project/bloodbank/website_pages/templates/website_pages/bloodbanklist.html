@@ -1,0 +1,10 @@
+{% for bloodbank in bloodbanks %}
+<h1> {{bloodbank.name}} </h1>
+
+<h3> {{bloodbank.state}} </h3>
+{% for bloodpacket in bloodbank.BloodPackets.all %}
+    <h3> {{bloodpacket.packetID}} </h3>
+{% endfor %}
+ 
+
+{% endfor %}
