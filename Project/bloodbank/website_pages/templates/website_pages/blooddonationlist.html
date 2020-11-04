@@ -1,0 +1,5 @@
+{% for event in bloodDonationEvents %}
+<h1> <a href="{% url 'bloodbank-detail' event.organizedBy.id %}">{{ event.organizedBy.name }} </a></h1>
+
+<h3> {{event.venue}} </h3>
+{% endfor %}
