@@ -55,8 +55,10 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-         <button type="submit" class="registerbtn">Register</button>
+        <h2>Blood inventroy</h2>
+        {{ BloodPacketz.as_p }}
+         <button type="submit" class="registerbtn">Create BLoodbank</button>
     </form>
-    <p>Already Have an account? <a href="{% url 'login' %}">Login</a></p>
+    
 </div>
 
