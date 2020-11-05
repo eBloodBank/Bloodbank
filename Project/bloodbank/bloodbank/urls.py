@@ -19,6 +19,7 @@ from user import views as account_views
 from django.contrib.auth import views as auth_views
 
 
+
 urlpatterns = [
     path('', include('website_pages.urls')),
     path('admin/', admin.site.urls),

@@ -6,10 +6,10 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def home(request):
-    return render(request,'website_pages/home.html')
+    return render(request,'website_pages/home.html', {'title': 'Home Page'})
 
 def about(request):
-    return render(request,'website_pages/about.html')
+    return render(request,'website_pages/about.html', {'title': 'About Page'})
 
 class BloodDonationEventListView(ListView):
     model = BloodDonationEvent
