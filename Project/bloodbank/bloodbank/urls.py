@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from bloodbank.user import views as account_views
+from user import views as account_views
 
 
 urlpatterns = [
