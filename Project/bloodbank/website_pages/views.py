@@ -10,9 +10,13 @@ def home(request):
 
 def about(request):
 <<<<<<< HEAD
+<<<<<<< HEAD
     return render(request,'website_pages/about.html', {'title': 'About Page'})
 =======
     return render(request,'website_pages/about.html')
+=======
+    return render(request,'website_pages/about.html', {'title': 'About Page'})
+>>>>>>> ae8549cb95ee91a77bff14946a051b81f0fb60a8
 
 class BloodDonationEventListView(ListView):
     model = BloodDonationEvent
@@ -120,4 +124,7 @@ class BloodBankDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+<<<<<<< HEAD
 >>>>>>> aace3631055419c5f23a76a15f0f8885fcdb04b1
+=======
+>>>>>>> ae8549cb95ee91a77bff14946a051b81f0fb60a8

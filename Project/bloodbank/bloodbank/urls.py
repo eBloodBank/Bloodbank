@@ -17,9 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from user import views as account_views
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 from django.contrib.auth import views as auth_views
 >>>>>>> aace3631055419c5f23a76a15f0f8885fcdb04b1
+=======
+from django.contrib.auth import views as auth_views
+
+>>>>>>> ae8549cb95ee91a77bff14946a051b81f0fb60a8
 
 
 urlpatterns = [
