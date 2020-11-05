@@ -1,6 +1,27 @@
+<<<<<<< HEAD
 {% extends "./base.html" %}
 {% block content %}
 
 <h1>Welcome</h1>
 
 {% endblock %}
+=======
+<html>
+    <title>home</title>
+    <body>
+        <h1>HOMe page</h1>
+        <h3><a href="{% url 'bloodbank-create' %}">Create BB</a></h3>
+        <h3><a href="{% url 'bloodbank-list' %}">List of BB</a></h3>
+        <h3><a href="{% url 'bloodDonationEvent-list' %}">List of events</a></h3>
+        {% if request.user.is_authenticated %}
+        <h3><a href="{% url 'bloodbank-create' %}">Create BB</a></h3>
+        <h3><a href="{% url 'bloodDonationEvent-create' %}">Create event</a></h3>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+
+    </body>
+</html>
+>>>>>>> aace3631055419c5f23a76a15f0f8885fcdb04b1

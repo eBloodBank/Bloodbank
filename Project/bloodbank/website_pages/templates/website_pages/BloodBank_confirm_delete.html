@@ -55,8 +55,11 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-         <button type="submit" class="registerbtn">Register</button>
+        <h2>Are you sure you want to delete the Blood Bank " {{ object.name }}"?</h2>
+        
+         <button type="submit" class="registerbtn">Delete Bloodbank</button>
+        <h3><a href="{% url 'bloodbank-detail' object.id  %}"></a> Cancel </h3>
     </form>
-    <p>Already Have an account? <a href="{% url 'login' %}">Login</a></p>
+    
 </div>
 
