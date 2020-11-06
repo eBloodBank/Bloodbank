@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;500&family=Poppins:wght@300;400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../static/website_pages/home.css">
+    <link rel="stylesheet" type="text/css" href="../../static/website_pages/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../../static/website_pages/footer.css">
     {% if title %}
     <title>{{ title }}</title>
     {% else %}
@@ -16,8 +21,136 @@
 
 </head>
 
-<body>
+<body onload="myFunc()">
+    <div id="preLoader"> </div>
+
+    <header class=main-header>
+        <div class="head_bar">
+            <div class="inner-container">
+                <div class="clearfix">
+                    <div class="logo_box hidden-xs">
+                        <div class="logo">
+                            <a href="/" title="Blood Bank">
+                                <img src="../../static/website_pages/awp2.png">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="buttons_container">
+                        <div class="clearfix">
+                            <a href="{% url 'register' %}" class="myButton">
+                                <span class="fa fa-user-circle-o" aria-hidden="true"></span>&nbsp;Register</a>
+                            <a href="{% url 'login' %}" class="myButton">
+                                <span class="fa fa-lock"></span>&nbsp;Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-lower">
+            <div class="auto-container">
+                <!--Nav Outer-->
+                <div class="nav-outer clearfix">
+                    <!-- Main Menu -->
+                    <nav class="main-menu">
+                        <div class="navbar-header">
+                            <!-- Toggle Button -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="navbar-collapse collapse clearfix">
+                            <ul class="navigation clearfix">
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/bloodbank">Blood Bank</a></li>
+                                <li><a href="/blogs">About</a></li>
+                                <li><a href="/causes">Camps</a></li>
+                                <li><a href="/events">Events</a></li>
+                                <li><a href="/news">News</a></li>
+                                <li><a href="/videos">Blah BLah</a></li>
+                                <li class="dropdown"><a href="#">More</a>
+                                    <ul>
+                                        <li><a href="/about us">About Us</a></li>
+                                        <li><a href="/RequestBlood">Request Blood</a></li>
+                                        <li><a href="/donations">Donations</a></li>
+                                        <li><a href="/ContactUs/Other">Contact Us</a></li>
+                                    </ul>
+                                    <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- Main Menu End-->
+                </div>
+                <!--Nav Outer End-->
+            </div>
+        </div>
+    </header>
     {% block content %} {% endblock content %}
+
+
+    <footer id="footer" class="footer-1">
+        <div class="main-footer widgets-dark typo-light">
+        <div class="container">
+        <div class="row">
+          
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget subscribe no-box">
+        <h5 class="widget-title">E-Blood Bank<span></span></h5>
+        <p>This is ba-da-boom. </p>
+        </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget no-box">
+        <h5 class="widget-title">Quick Links<span></span></h5>
+        <ul class="thumbnail-widget">
+        <li>
+        <div class="thumb-content"><a href="#.">Home</a></div>	
+        </li>
+        <li>
+        <div class="thumb-content"><a href="#.">Blood Banks</a></div>	
+        </li>
+        <li>
+        <div class="thumb-content"><a href="#.">About</a></div>	
+        </li>
+        <li>
+        <div class="thumb-content"><a href="#.">Event/Camps</a></div>	
+        </li>
+        <li>
+        <div class="thumb-content"><a href="#.">Team</a></div>	
+        </li>
+        <li>
+        <div class="thumb-content"><a href="#.">Boom</a></div>	
+        </li>
+        <li>
+        <div class="thumb-content"><a href="#.">Puccy</a></div>	
+        </li>
+        </ul>
+        </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="widget no-box">
+        <h5 class="widget-title">Get Started<span></span></h5>
+        <p>Get access to your full Training and Marketing Suite.</p>
+        <a class="myButton" href="{% url 'register' %}"" target="_blank">Register Now</a>
+        </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-6 col-md-3">
+        
+        <div class="widget no-box">
+        <h5 class="widget-title">Contact Us<span></span></h5>
+        
+        <p><a href="mailto:info@domain.com" title="glorythemes">info@domain.com</a></p>
+
+
+    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
@@ -26,6 +159,14 @@
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://use.fontawesome.com/df83636777.js"></script>
+    <script>
+        var loader = document.getElementById("preLoader")
+
+        function myFunc() {
+            loader.style.display = 'none';
+        }
     </script>
 </body>
 

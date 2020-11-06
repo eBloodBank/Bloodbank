@@ -11,6 +11,7 @@ def home(request):
 def about(request):
     return render(request,'website_pages/about.html', {'title': 'About Page'})
 
+
 class BloodDonationEventListView(ListView):
     model = BloodDonationEvent
     template_name = 'website_pages/blooddonationlist.html'
