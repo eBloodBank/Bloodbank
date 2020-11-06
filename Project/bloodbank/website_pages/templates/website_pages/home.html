@@ -1,9 +1,7 @@
 {% extends "./base.html" %}
 {% block content %}
 
-<html>
-    <title>home</title>
-    <body>
+<h1>Welcome</h1>
         <h1>HOMe page</h1>
         <h3><a href="{% url 'bloodbank-create' %}">Create BB</a></h3>
         <h3><a href="{% url 'bloodbank-list' %}">List of BB</a></h3>
@@ -17,8 +15,6 @@
         <li><a href="{% url 'login' %}">Login</a></li>
         {% endif %}
 
-    </body>
-</html>
-
 {% endblock %}
+
 
