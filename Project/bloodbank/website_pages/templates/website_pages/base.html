@@ -12,7 +12,13 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../../static/website_pages/home.css">
     <link rel="stylesheet" type="text/css" href="../../static/website_pages/navbar.css">
-    <link rel="stylesheet" type="text/css" href="../../static/website_pages/footer.css">
+    <link rel="stylesheet" href="../../static/website_pages//assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../static/website_pages/assets/css/styles.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     {% block links %} {% endblock links %}
     {% if title %}
     <title>{{ title }}</title>
@@ -68,14 +74,14 @@
                             <ul class="navigation clearfix">
                                 <li><a href="/">Home</a></li>
                                 <li><a href="/bloodbank">Blood Bank</a></li>
-                                <li><a href="/blogs">About</a></li>
+                                <li><a href="/about">About</a></li>
                                 <li><a href="/causes">Camps</a></li>
                                 <li><a href="/events">Events</a></li>
                                 <li><a href="/news">News</a></li>
                                 <li><a href="/videos">Blah BLah</a></li>
                                 <li class="dropdown"><a href="#">More</a>
                                     <ul>
-                                        <li><a href="/about us">About Us</a></li>
+                                        <li><a href="/about">About Us</a></li>
                                         <li><a href="/RequestBlood">Request Blood</a></li>
                                         <li><a href="/donations">Donations</a></li>
                                         <li><a href="/ContactUs/Other">Contact Us</a></li>
@@ -93,63 +99,36 @@
     </header>
     {% block content %} {% endblock content %}
 
-
-    <footer id="footer" class="footer-1">
-        <div class="main-footer widgets-dark typo-light">
-        <div class="container">
-        <div class="row">
-          
-        <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="widget subscribe no-box">
-        <h5 class="widget-title">E-Blood Bank<span></span></h5>
-        <p>This is ba-da-boom. </p>
-        </div>
-        </div>
-        
-        <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="widget no-box">
-        <h5 class="widget-title">Quick Links<span></span></h5>
-        <ul class="thumbnail-widget">
-        <li>
-        <div class="thumb-content"><a href="#.">Home</a></div>	
-        </li>
-        <li>
-        <div class="thumb-content"><a href="#.">Blood Banks</a></div>	
-        </li>
-        <li>
-        <div class="thumb-content"><a href="#.">About</a></div>	
-        </li>
-        <li>
-        <div class="thumb-content"><a href="#.">Event/Camps</a></div>	
-        </li>
-        <li>
-        <div class="thumb-content"><a href="#.">Team</a></div>	
-        </li>
-        <li>
-        <div class="thumb-content"><a href="#.">Boom</a></div>	
-        </li>
-        <li>
-        <div class="thumb-content"><a href="#.">Puccy</a></div>	
-        </li>
-        </ul>
-        </div>
-        </div>
-        
-        <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="widget no-box">
-        <h5 class="widget-title">Get Started<span></span></h5>
-        <p>Get access to your full Training and Marketing Suite.</p>
-        <a class="myButton" href="{% url 'register' %}"" target="_blank">Register Now</a>
-        </div>
-        </div>
-        
-        <div class="col-xs-12 col-sm-6 col-md-3">
-        
-        <div class="widget no-box">
-        <h5 class="widget-title">Contact Us<span></span></h5>
-        
-        <p><a href="mailto:info@domain.com" title="glorythemes">info@domain.com</a></p>
-
+    <div class="footer-dark">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Company Name © 2017</p>
+            </div>
+        </footer>
+    
 
     
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
