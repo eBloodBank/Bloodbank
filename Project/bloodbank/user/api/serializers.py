@@ -31,7 +31,6 @@ class DonorSerializer(serializers.ModelSerializer):
         instance.number_of_donations = validated_data.get('number_of_donations', instance.number_of_donations)
         instance.data_share = validated_data.get('data_share', instance.data_share)
         if validated_data.get('password'):
-            print()
             instance.set_password(validated_data.get('password'))
         instance.save()
         return instance
