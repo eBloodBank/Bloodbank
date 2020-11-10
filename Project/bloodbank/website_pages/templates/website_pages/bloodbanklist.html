@@ -1,5 +1,5 @@
 {% for bloodbank in bloodbanks %}
-<h1> <a href="{% url 'bloodbank-detail' bloodbank.id %}">{{bloodbank.name}} </a></h1>
+<h1> <a href="{% url 'bloodbanks-detail' bloodbank.id %}">{{bloodbank.name}} </a></h1>
 
 <h3> {{bloodbank.state}} </h3>
 {% for bloodpacket in bloodbank.BloodPackets.all %}

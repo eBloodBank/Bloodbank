@@ -1,11 +1,16 @@
 from rest_framework import serializers
-from .models import BloodBank, BloodPacket
+from .models import BloodBank, BloodPacket, BloodDonationEvent
 from user.models import User
 from rest_framework.fields import CurrentUserDefault
 
 class BloodPacketSerializer(serializers.ModelSerializer):
     class Meta:
         model = BloodPacket
+        fields = '__all__'
+
+class BloodDonationEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BloodDonationEvent
         fields = '__all__'
 
 class BloodBankSerializer(serializers.ModelSerializer):

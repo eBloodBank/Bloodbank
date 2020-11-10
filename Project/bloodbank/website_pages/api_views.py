@@ -1,8 +1,8 @@
 from rest_framework import viewsets
-from .models import BloodBank, BloodPacket
+from .models import BloodBank, BloodPacket, BloodDonationEvent
 from user.models import User
 from rest_framework.response import Response
-from .serializers import BloodBankSerializer, UserSerializer, BloodPacketSerializer
+from .serializers import BloodBankSerializer, UserSerializer, BloodPacketSerializer, BloodDonationEventSerializer
 from rest_framework import status
 
 class BloodBankViewSet(viewsets.ModelViewSet):
@@ -43,6 +43,10 @@ class BloodPacketViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+class BloodDonationEventViewSet(viewsets.ModelViewSet):
+    queryset = BloodDonationEvent.objects.all()
+    serializer_class = BloodDonationEventSerializer
 
 
 
