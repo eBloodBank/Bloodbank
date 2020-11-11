@@ -7,10 +7,10 @@ from .models import User
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(max_length=50, help_text='Required')
 
-    field_order = ['username', 'first_name', 'last_name', 'email', 'contact_number', 'is_blood_bank_admin',
-                   'is_donor_or_receiver', 'gender', 'dob', 'address', 'city', 'state', 'blood_group',
+    field_order = ['username', 'first_name', 'last_name','address', 'city', 'state', 'is_blood_bank_admin',
+                   'is_donor_or_receiver', 'blood_group', 'dob', 'gender',
                    'number_of_donations',
-                   'data_share']
+                   'data_share', 'email', 'contact_number',]
 
     class Meta:
         model = User
