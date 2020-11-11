@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'website_pages',
     'user',
+    'fullurl',
+    'drf_yasg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,3 +129,8 @@ AUTH_USER_MODEL = 'user.User'
 LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'login'
+
+SWAGGER_SETTINGS = {
+    'LOGOUT_URL' : '/logout'
+}
+
