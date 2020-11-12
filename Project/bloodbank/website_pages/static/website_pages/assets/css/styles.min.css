@@ -14,6 +14,13 @@
     color: #ffffff
 }
 
+#info-card{
+    background-image: url('../../images/back.jpg');
+    background-position: center;
+    background-size: unset;
+    color: #ffffff;
+}
+
 @media (max-width:576px) {
     #desc {
         width: 40%;
