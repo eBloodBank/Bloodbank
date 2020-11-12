@@ -6,111 +6,68 @@
 <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-<link rel="stylesheet" href="../../static/website_pages//assets/css/styles.min.css">
+<link rel="stylesheet" href="../../static/website_pages/assets/css/styles.min.css">
 {% endblock links %}
 
 {% block content %}
-<main style="background: url('../../static/website_pages/cells.gif'); background-repeat: no-repeat; background-size: cover; height: 80vh;">
-    <section>
-        <div class="container">
-            <div>
-                <h2 class="text-center" style="color: #ffffff; padding-top: 20px;">About Us</h2>
-                <p style="color: #ffffff; margin-right: 345px;margin-left: 345px;">This project is all about providing easy and fast way
-                    to search for blood donors or blood banks to get the blood in shortest amount of time to the
-                    patient.<br></p>
-            </div>
-            <div class="row row-cols-3 row-cols-sm-3 justify-content-center align-items-center">
-                <div class="col" style="margin: 0px;margin-bottom: 19px;box-shadow: 0px 0px;">
-                    <div class="card">
-                        <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
-                            <h4 class="text-center card-title" style="font-weight: 600;font-size: 16px;">Vipul Rawat
-                            </h4>
-                            <p class="text-center card-text"
-                                style="font-size: 13.6px;font-family: Montserrat, sans-serif;">IIIT Sri City<br>3rd
-                                Year<br></p>
-                            <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-linkedin-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-facebook-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a>
+    <main style="background: url('../../static/website_pages/cells.gif'); background-repeat: no-repeat; background-size: cover; height: 80vh;">
+        <section class="hero-about">
+            <div class="container d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex flex-column align-items-center align-content-center" id="text-container">
+                    <h2 class="text-center" id="about-heaing">About Us</h2>
+                    <p id="desc">This project is all about providing easy and fast way to search for blood donors or blood banks to get the blood in shortest amount of time to the patient.<br></p>
+                </div>
+                <div class="row row-cols-3 row-cols-sm-3 justify-content-center align-items-center" id="card-container">
+                    <div class="col" id="card-container">
+                        <div class="card">
+                            <div class="card-body d-flex flex-column align-items-center" id="info-card">
+                                <h4 class="text-center card-title" id="card-name">Vipul Rawat</h4>
+                                <p class="text-center card-text" id="card-desc">IIIT Sri City<br>3rd Year<br></p>
+                                <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-linkedin-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-facebook-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col" style="margin: 0px;margin-bottom: 19px;box-shadow: 0px 0px;">
-                    <div class="card">
-                        <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
-                            <h4 class="text-center card-title" style="font-weight: 600;font-size: 16px;">Utkarsh Aditya
-                            </h4>
-                            <p class="text-center card-text"
-                                style="font-size: 13.6px;font-family: Montserrat, sans-serif;">IIIT Sri City<br>3rd
-                                Year<br></p>
-                            <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-linkedin-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-facebook-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a>
+                    <div class="col" id="card-container">
+                        <div class="card">
+                            <div class="card-body" id="info-card">
+                                <h4 class="text-center card-title" id="card-name">Utkarsh Aditya</h4>
+                                <p class="text-center card-text" id="card-desc">IIIT Sri City<br>3rd Year<br></p>
+                                <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-linkedin-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-facebook-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col" style="margin: 0px;margin-bottom: 19px;box-shadow: 0px 0px;">
-                    <div class="card">
-                        <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
-                            <h4 class="text-center card-title" style="font-weight: 600;font-size: 16px;">Pradum Singh
-                            </h4>
-                            <p class="text-center card-text"
-                                style="font-size: 13.6px;font-family: Montserrat, sans-serif;">IIIT Sri City<br>3rd
-                                Year<br></p>
-                            <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-linkedin-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-facebook-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a>
+                    <div class="col" id="card-container">
+                        <div class="card" id="info-card">
+                            <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
+                                <h4 class="text-center card-title" id="card-name">Pradum Singh</h4>
+                                <p class="text-center card-text" id="card-desc">IIIT Sri City<br>3rd Year<br></p>
+                                <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-linkedin-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-facebook-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col" style="margin: 0px;margin-bottom: 19px;box-shadow: 0px 0px;">
-                    <div class="card">
-                        <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
-                            <h4 class="text-center card-title" style="font-weight: 600;font-size: 16px;">Sumanth Bhat
-                            </h4>
-                            <p class="text-center card-text"
-                                style="font-size: 13.6px;font-family: Montserrat, sans-serif;">IIIT Sri City<br>3rd
-                                Year<br></p>
-                            <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-linkedin-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-facebook-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a>
+                    <div class="col" id="card-container">
+                        <div class="card" id="info-card">
+                            <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
+                                <h4 class="text-center card-title" id="card-name">Sumanth Bhat</h4>
+                                <p class="text-center card-text" id="card-desc">IIIT Sri City<br>3rd Year<br></p>
+                                <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-linkedin-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-facebook-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col" style="margin: 0px;margin-bottom: 19px;box-shadow: 0px 0px;">
-                    <div class="card">
-                        <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
-                            <h4 class="text-center card-title" style="font-weight: 600;font-size: 16px;">Sushant Bondle
-                            </h4>
-                            <p class="text-center card-text"
-                                style="font-size: 13.6px;font-family: Montserrat, sans-serif;">IIIT Sri City<br>3rd
-                                Year<br></p>
-                            <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-linkedin-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i
-                                        class="fa fa-facebook-square"></i></a><a href="#"
-                                    style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a>
+                    <div class="col" id="card-container">
+                        <div class="card" id="info-card">
+                            <div class="card-body" style="box-shadow: -0.5px 0px 1px;">
+                                <h4 class="text-center card-title" id="card-name">Sushant Bondle</h4>
+                                <p class="text-center card-text" id="card-desc">IIIT Sri City<br>3rd Year<br></p>
+                                <div class="text-center"><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-linkedin-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-facebook-square"></i></a><a href="#" style="width: 32px;height: 32px;margin: 8px;"><i class="fa fa-twitter"></i></a></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+        </section>
+    </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 <script src="../../static/website_pages/assets/js/script.min.js"></script>
 {% endblock content %}
