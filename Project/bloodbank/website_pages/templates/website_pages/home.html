@@ -1,8 +1,17 @@
 {% extends "./base.html" %}
-{% block content %}
 
-<h1>Welcome</h1>
-        <h1>HOMe page</h1>
+{% block links %}
+<link rel="stylesheet"
+        href="../../static/website_pages/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/website_pages/assets/css/styles.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+{% endblock links %}
+
+{% block content %}
+<!-- <h1>HOMe page</h1>
         <h3><a href="{% url 'bloodbank-create' %}">Create BB</a></h3>
         <h3><a href="{% url 'bloodbank-list' %}">List of BB</a></h3>
         <h3><a href="{% url 'bloodDonationEvent-list' %}">List of events</a></h3>
@@ -13,8 +22,53 @@
         {% else %}
         <li><a href="{% url 'register' %}">Register</a></li>
         <li><a href="{% url 'login' %}">Login</a></li>
-        {% endif %}
-
+        {% endif %} -->
+<main>
+        <section class="d-flex flex-row justify-content-center align-items-center align-content-center" id="hero">
+                <div class="d-flex flex-column justify-content-center align-items-start" id="left-info">
+                        <h2 id="hero-heading">The search for blood ends here✓</h2>
+                        <p id="hero-tagline"><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
+                                urna, dignissim nec auctor in, mattis vitae leo.<br><br></p>
+                </div>
+                <div class="d-flex flex-column justify-content-center" id="right-search">
+                        <form id="form-container">
+                                <div class="d-flex flex-column justify-content-center align-items-center flash animated"
+                                        id="search-form">
+                                        <div id="search-heading-div">
+                                                <h4>Search Now!</h4>
+                                        </div>
+                                        <input class="border rounded-0 form-control" type="search" id="search-input"
+                                                required="" placeholder="Location">
+                                        <select class="custom-select" id="blood-group-input">
+                                                <option value="1">A+</option>
+                                                <option value="2">A-</option>
+                                                <option value="3">B+</option>
+                                                <option value="4">B-</option>
+                                                <option value="5">AB+</option>
+                                                <option value="6">AB-</option>
+                                                <option value="7">O+</option>
+                                                <option value="8">O-</option>
+                                        </select>
+                                        <button class="btn btn-primary" id="search-btn" type="button">Search</button>
+                                </div>
+                        </form>
+                </div>
+        </section>
+        <section class="d-flex flex-row justify-content-center" id="mid-join-now" style="background: #b4b4b4;">
+                <div class="d-flex flex-column justify-content-center" id="left-text-join">
+                        <h1 id="join-us-heading">Ready to get started ?</h1>
+                        <h4 id="join-us-tag">Sign up or contact us</h4>
+                </div>
+                <div class="d-flex flex-row justify-content-center align-items-center" id="right-btns-join"><button
+                                class="btn btn-primary" id="sign-up-btn" type="button">Signup</button><button
+                                class="btn btn-primary" id="contact-btn" type="button">Contact Us</button></div>
+        </section>
+        <section class="d-flex flex-column justify-content-center align-items-center" id="aero">
+                <h1 id="video-title">Your donated blood is safe!</h1>
+                <iframe allowfullscreen="" frameborder="0"
+                        src="https://www.youtube.com/embed/6kSLEnvDhCU?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=6kSLEnvDhCU"
+                        id="video-abt" width="560" height="315"></iframe>
+                <button class="btn btn-primary" id="donate-btn" type="button">Donate Now</button>
+        </section>
+</main>
 {% endblock %}
-
-
