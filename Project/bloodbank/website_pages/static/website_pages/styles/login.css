@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+}
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+
+ body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}  
+
+.container_login {
+    position: relative;
+    color: #6a6f8c;
+    padding: 80px;
+    background-image:  url('../images/Untitled.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 600px;
+    font: 600 16px/18px 'Open Sans', sans-serif;
+    
+
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: '';
+    display: table
+}
+
+.clearfix:after {
+    clear: both;
+    display: block
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    text-emphasis: none;
+}
+
+.login-wrap {
+    width: 100%;
+    /* margin: 110px; */
+    margin-left: 800px;
+    max-width: 470px;
+    min-height: 570px;
+    display: flex;
+    position: relative;
+    background: url('../images/back.jpg');
+    background-position: center;
+    border-radius: 4%;
+    overflow: auto;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+}
+
+.login-html {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    align-items: flex-start; 
+    padding: 69px 60px 10px 60px;
+    /* background: rgba(10, 57, 109, .9); */
+    /* background: rgba(255, 0, 10, .3); */
+}
+
+.login-html .sign-in-htm,
+.login-html .sign-up-htm {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 20px;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: all .4s linear;
+}
+
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check {
+    display: none;
+}
+
+.login-html .tab,
+.login-form .group .label,
+.login-form .group .button {
+    text-transform: uppercase;
+}
+
+.login-html .tab {
+    font-size: 22px;
+    margin-right: 15px;
+    padding-bottom: 5px;
+    margin: 0 15px 3px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+}
+
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab {
+    color: #fff!important;
+    border-color: #1161ee;
+}
+
+.login-form {
+    min-height: 345px;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.login-form .group {
+    margin-bottom: 15px;
+}
+
+.input{
+  height: 32px;
+}
+
+.button{
+  margin-top: 20px;
+}
+.login-form .group .label,
+.login-form .group .input,
+.login-form .group .button {
+    width: 100%;
+    color: #fff;
+    display: block;
+}
+
+.login-form .group .input,
+.login-form .group .button {
+    border: none;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.login-form .group input[data-type="password"] {
+    text-security: circle;
+    -webkit-text-security: circle;
+}
+
+.login-form .group .label {
+    color: #fff;
+    font-size: 12px;
+}
+
+.login-form .group .button {
+    background: lightcoral;
+    opacity: 0.7;
+}
+
+.login-form .group .button:hover {
+    opacity: 1;
+}
+
+.login-form .group label .icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    position: relative;
+    display: inline-block;
+    background: rgba(255, 255, 255, .1);
+}
+
+.login-form .group label .icon:before,
+.login-form .group label .icon:after {
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    transition: all .2s ease-in-out 0s;
+}
+
+.login-form .group label .icon:before {
+    left: 3px;
+    width: 5px;
+    bottom: 6px;
+    transform: scale(0) rotate(0);
+}
+
+.login-form .group label .icon:after {
+    top: 6px;
+    right: 0;
+    transform: scale(0) rotate(0);
+}
+
+.login-form .group .check:checked + label {
+    color: #fff;
+}
+
+.login-form .group .check:checked + label .icon {
+    background: #1161ee;
+}
+
+.login-form .group .check:checked + label .icon:before {
+    transform: scale(1) rotate(45deg);
+}
+
+.login-form .group .check:checked + label .icon:after {
+    transform: scale(1) rotate(-45deg);
+}
+
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
+    transform: rotate(0);
+}
+
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+    transform: rotate(0);
+}
+
+.hr {
+    height: 2px;
+    margin: 20px 0 15px 0;
+    background: rgba(255, 255, 255, .2);
+}
+
+.foot-lnk {
+  text-align: center;
+  font-size: 20px; 
+}
+.foot-lnk a {
+    color: aqua;
+
+}
+.foot-lnk a:hover{
+    text-decoration: none;
+  }
+
+.foot-lnk .want {
+    color: #fff!important;
+    font-size: 16px;
+}

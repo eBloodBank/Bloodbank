@@ -1,62 +1,39 @@
-<head>
-    <style>
-        * {box-sizing: border-box}
+{% extends "user/base.html" %}
+{% load crispy_forms_tags %}
+{% block title%}
+E-Blood Bank | SIGN UP
+{%endblock%}
 
-        .container {
-          padding: 16px;
-        }
+{% block content %}
+<div class="container_register">
+  <div class="register-wrap">
+    <div class="register-html">
+      <input id="tab-1" type="radio" name="tab" class="sign-in"><label for="tab-1" class="tab"></label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">REGISTER</label>
+      <!-- <div class="signup" >SIGN UP</div> -->
 
-        input[type=text], input[type=password] {
-          width: 100%;
-          padding: 15px;
-          margin: 5px 0 22px 0;
-          display: inline-block;
-          border: none;
-          background: #f1f1f1;
-        }
+      <div class="register-form">
+        <div class="sign-up-htm">
 
-        input[type=text]:focus, input[type=password]:focus {
-          background-color: #ddd;
-          outline: none;
-        }
+          <form method="POST" action="{% url 'register'%}">
+            {%csrf_token%}
 
-        hr {
-          border: 1px solid #f1f1f1;
-          margin-bottom: 25px;
-        }
+            {{ form|crispy}}
+            <div class="group">
+              <button type="submit" class="button">Register</button>
+            </div>
 
-        .registerbtn {
-          background-color: #4CAF50;
-          color: white;
-          padding: 16px 20px;
-          margin: 8px 0;
-          border: none;
-          cursor: pointer;
-          width: 10%;
-          opacity: 0.9;
-        }
 
-        .registerbtn:hover {
-          opacity:1;
-        }
+            <div class="hr"></div>
 
-        a {
-          color: dodgerblue;
-        }
+            <div class="foot-lnk-register">
+              <a href="{%url 'login'%}">Already Have an Account? Sign In.</a>
+            </div>
 
-        .signin {
-          background-color: #f1f1f1;
-          text-align: center;
-        }
-    </style>
-</head>
-{{ form.errors }}
-<div class="container">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-         <button type="submit" class="registerbtn">Register</button>
-    </form>
-    <p>Already Have an account? <a href="{% url 'login' %}">Login</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
+{%endblock content%}
