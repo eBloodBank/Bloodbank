@@ -24,6 +24,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('', views.home, name='home'),
     path('docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redocs/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('about/', views.about, name='about'),
     path('bloodbanks/', BloodBankListView.as_view(), name='bloodbanks-list'),
     path('bloodbank/new/', BloodBankCreateView.as_view(), name='bloodbank-create'),

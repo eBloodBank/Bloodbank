@@ -8,7 +8,7 @@ from drf_yasg.utils import swagger_auto_schema
 
 #packages appropiately the request for function based view
 @swagger_auto_schema('GET', responses = {200: DonorSerializer(many=True)}, operation_summary="Get list of Donors" )
-@swagger_auto_schema('POST', request_body = DonorSerializer, responses={200: "Successfully Registered", 404: "Bad Request" })
+@swagger_auto_schema('POST', request_body = DonorSerializer, responses={200: "Successfully Registered", 404: "Bad Request" }, operation_summary="Create New Donor")
 @api_view(http_method_names=['GET','POST']) #manages the request in a way that is useable by other rest frameworks
 def donor_list_view(request):
     if request.method == 'GET':
@@ -36,7 +36,7 @@ def donor_view_post(request):
     else:
         return Response(serializer.errors ,status = status.HTTP_400_BAD_REQUEST)
 
-
+@swagger_auto_schema('GET', responses = {200: DonorSerializer, 404: "Donor Doesn't Exist" } )
 @api_view(http_method_names=['GET','PUT','DELETE']) #manages the request in a way that is useable by other rest frameworks
 def donor_detail_view(request, pk):
     try:
