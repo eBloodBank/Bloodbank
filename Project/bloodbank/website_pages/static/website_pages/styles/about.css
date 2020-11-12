@@ -1,0 +1,61 @@
+.hero-about {
+    width: 100%;
+    padding: 0;
+    margin: 0
+}
+
+#desc {
+    width: 40%;
+    min-width: 50px;
+    color: #ffffff;
+}
+
+#about-heaing {
+    color: #ffffff
+}
+
+#info-card{
+    background-image: url('../images/back.jpg');
+    background-position: center;
+    background-size: unset;
+    color: #ffffff;
+}
+
+@media (max-width:576px) {
+    #desc {
+        width: 40%;
+        font-size: 10px
+    }
+
+    #card-name {
+        font-size: 15px
+    }
+}
+
+@media (max-width:513px) {
+    #card-name {
+        font-size: 12px
+    }
+}
+
+@media (max-width:360px) {
+    #card-name {
+        font-size: 9px
+    }
+
+    #card-desc {
+        font-size: 8px
+    }
+}
+
+@media (min-width:992px) {
+    #card-desc {
+        font-size: 16px
+    }
+}
+
+@media (min-width:576px) {
+    #info-card {
+        min-height: 196px
+    }
+}

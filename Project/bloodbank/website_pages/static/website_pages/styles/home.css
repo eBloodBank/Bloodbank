@@ -41,7 +41,7 @@ body {
 
 .head_bar .inner-container {
     position: static;
-    padding: 0 15px;
+    padding: 0px;
     margin: 0 auto;
     max-width: 1200px;
 }
@@ -55,18 +55,19 @@ body {
 .head_bar .inner-container .logo_box {
     position: relative;
     float: left;
-    padding: 22px 0px;
     z-index: 10;
 }
 .head_bar .inner-container .logo_box .logo img {
     display: inline-block;
-    width: 300px; 
+    width: 90px; 
+    height: 90px;
+    margin-bottom: 2px;
 }
 
 .head_bar .buttons_container {
     position: relative;
     float: right;
-    padding: 37px 0px 0px;
+    padding-top: 6px;
 }
 
 .fa-user-circle-o::before {
@@ -108,4 +109,176 @@ body {
 .myButton:active {
     position: relative;
     top: 1px;
+}
+
+#hero {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    background: url('../images/hero-back.jpeg') no-repeat;
+    background-position-y: 0px;
+    background-size: cover;
+}
+
+#left-info {
+    width: 50%;
+    height: inherit;
+    margin: 5px;
+}
+
+#empty{
+    width: 50%;
+    height: 100px;
+    padding: 100px;
+}
+
+#left-text-join,
+#right-search {
+    width: 50%
+}
+
+#right-search{
+    margin-top: 255px;
+}
+
+#search-form {
+    height: 100%;
+    margin: 5px 16px 5px 5px;
+    box-shadow: 1px 0 5px;
+    border-radius: 12px;
+    background: url('../images/search-back.jpg') no-repeat;
+    background-size: cover;
+}
+
+#hero-heading {
+    margin-top: 20px;
+}
+
+#hero-tagline {
+    margin: 5px;
+    font-size: 15px;
+    text-align: left
+}
+
+@media (max-width:360px) {
+    #hero {
+        width: 100%;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: #b4b4b4
+    }
+
+    #left-info {
+        width: 100%;
+        margin: 5px
+    }
+
+    #right-search {
+        width: 90%
+    }
+
+    #search-form {
+        height: 100%;
+        margin: 5px;
+        box-shadow: 1px 0 5px
+    }
+
+    #hero-heading {
+        margin: 5px;
+        font-size: 15px;
+        font-weight: bolder
+    }
+
+    #hero-tagline {
+        margin: 5px;
+        text-align: left;
+        width: 100%;
+        font-size: 10px
+    }
+}
+
+#blood-group-input,
+#search-input {
+    width: 80%;
+    margin: 10px
+}
+
+#search-btn {
+    background: #a70a00;
+    margin-bottom: 18px
+}
+
+#search-heading-div {
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 24px;
+    text-align: center
+}
+
+#join-us-heading,
+#join-us-tag {
+    text-align: center
+}
+
+#contact-btn {
+    color: #000;
+    width: 142px;
+    height: 50px;
+    font-size: 20px;
+    background: rgba(0, 123, 255, 0);
+    border-color: #a70000
+}
+
+#sign-up-btn {
+    margin: 10px;
+    background: #a70000;
+    width: 120px;
+    height: 50px;
+    font-size: 20px
+}
+
+#mid-join-now {
+    width: 100%;
+    margin-top: 10px;
+    height: 30vh;
+    background: #b4b4b4
+}
+
+#right-btns-join {
+    width: 50%;
+    height: 100%
+}
+
+#aero {
+    height: 80vh;
+    background: #000;
+    margin-top: 10px
+}
+
+#card-container {
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+#video-title {
+    color: #fff;
+    margin-top: 15px
+}
+
+#donate-btn {
+    background: rgba(0, 123, 255, 0);
+    border: 5px solid #a70000;
+    width: 163px;
+    height: 49px;
+    font-size: 20px;
+    color: #fff
+}
+
+#video-abt {
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 13px
 }
