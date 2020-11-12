@@ -1,0 +1,248 @@
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box
+}
+
+/* body {
+    margin: 0;
+    color: white;
+    background: url('../images/login_cells.jpg');
+    font: 600 16px/18px 'Open Sans', sans-serif;
+    min-height: 2200px;
+}  */
+.container_register {
+    position: relative;
+    color: firebrick;
+    padding: 10px;
+    background-image: url('../images/Register.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 810px;
+    font-family: 'Roboto Mono', monospace;  
+    font: 400 16px/18px 'Open Sans', sans-serif;
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: '';
+    display: table
+}
+
+.clearfix:after {
+    clear: both;
+    display: block
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    text-emphasis: none;
+}
+
+.register-wrap {
+    width: 100%;
+    margin: 110px;
+    margin-left: 110px;
+    max-width: 750px;
+    min-height: 1900px;
+    display: flex;
+    position: relative;
+    background: url('../images/drop.png') no-repeat;
+    background-size: 900px;
+    background-position: center;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+}
+
+.register-html {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    align-items: flex-start;
+    padding: 40px 60px 50px 60px;
+}
+
+.register-html .sign-in-htm,
+.register-html .sign-up-htm {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 20px;
+    position: absolute;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    transition: all .4s linear;
+}
+
+.register-html .sign-in,
+.register-html .sign-up,
+.register-form .group .check {
+    display: none;
+}
+
+.register-html .tab,
+.register-form .group .label,
+.register-form .group .button {
+    text-transform: uppercase;
+}
+
+.register-html .tab {
+    font-size: 34px;
+    background-color: #fff;
+    margin-right: 15px;
+    padding-bottom: 5px;
+    margin: 0 15px 3px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+}
+
+.register-html .sign-in:checked+.tab,
+.register-html .sign-up:checked+.tab {
+    color: #fff;
+    background-color:  rgb(237,28,36); 
+    border: 2px solid black; 
+    padding: 12px 225px 12px 250px;
+    /* border-color: #1161ee; */
+}
+
+.register-form {
+    min-height: 345px;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.register-form .group {
+    margin-bottom: 15px;
+}
+
+.input {
+    height: 32px;
+}
+
+.button {
+    margin-top: 20px;
+}
+
+.register-form .group .label,
+.register-form .group .input,
+.register-form .group .button {
+    width: 100%;
+    color: #fff;
+    display: block;
+}
+
+.register-form .group .input,
+.register-form .group .button {
+    border: none;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, .1);
+}
+
+.register-form .group input[data-type="password"] {
+    text-security: circle;
+    -webkit-text-security: circle;
+}
+
+.register-form .group .label {
+    color: #fff;
+    font-size: 12px;
+}
+
+.register-form .group .button {
+    background: rgb(237,28,36);
+    opacity: 0.85;
+}
+
+.register-form .group .button:hover {
+    opacity: 1;
+}
+
+.register-form .group label .icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    position: relative;
+    display: inline-block;
+    background: rgba(255, 255, 255, .1);
+}
+
+.register-form .group label .icon:before,
+.register-form .group label .icon:after {
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    transition: all .2s ease-in-out 0s;
+}
+
+.register-form .group label .icon:before {
+    left: 3px;
+    width: 5px;
+    bottom: 6px;
+    transform: scale(0) rotate(0);
+}
+
+.register-form .group label .icon:after {
+    top: 6px;
+    right: 0;
+    transform: scale(0) rotate(0);
+}
+
+.register-form .group .check:checked+label {
+    color: #fff;
+}
+
+.register-form .group .check:checked+label .icon {
+    background: #1161ee;
+}
+
+.register-form .group .check:checked+label .icon:before {
+    transform: scale(1) rotate(45deg);
+}
+
+.register-form .group .check:checked+label .icon:after {
+    transform: scale(1) rotate(-45deg);
+}
+
+.register-html .sign-in:checked+.tab+.sign-up+.tab+.register-form .sign-in-htm {
+    transform: rotate(0);
+}
+
+.register-html .sign-up:checked+.tab+.register-form .sign-up-htm {
+    transform: rotate(0);
+}
+
+.hr {
+    height: 2px;
+    margin: 20px 0 15px 0;
+    background: rgba(255, 255, 255, .2);
+}
+
+.foot-lnk-register {
+    text-align: center;
+    text-decoration: none;
+}
+
+.foot-lnk-register a:hover {
+    text-decoration: none;
+    color: #fff;
+}
