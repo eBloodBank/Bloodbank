@@ -9,7 +9,8 @@ class BloodPacket(models.Model):
     bloodGroup = models.CharField(choices=BLOOD_GROUPS, max_length=3)
     expiryDate = models.DateField()
     quantity = models.IntegerField(default=250)
-    Blood_bank = models.ForeignKey('BloodBank', on_delete=models.CASCADE)
+    Blood_bank = models.ForeignKey('BloodBank', on_delete=models.CASCADE, blank=True,
+        null=True)
 
     def __str__(self):
         return self.packetID
@@ -29,7 +30,7 @@ class BloodBank(models.Model):
     contactNo = models.CharField(max_length=12)
     email = models.CharField(max_length=50, unique=True)
     PostalAddress = models.CharField(max_length=100)
-    BloodPackets = models.ManyToManyField(BloodPacket)
+    BloodPackets = models.ManyToManyField(BloodPacket, blank=True)
     BloodBankAdmin = models.ForeignKey(User,on_delete=models.CASCADE)
 
 class BloodDonationEvent(models.Model):
