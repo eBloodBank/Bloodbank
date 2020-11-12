@@ -34,12 +34,15 @@ INSTALLED_APPS = [
     'website_pages',
     'user',
     'crispy_forms',
+    'fullurl',
+    'drf_yasg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -128,4 +131,9 @@ LOGIN_REDIRECT_URL = 'home'
 
 LOGIN_URL = 'login'
 
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+SWAGGER_SETTINGS = {
+    'LOGOUT_URL' : '/logout'
+}
