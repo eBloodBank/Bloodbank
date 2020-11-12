@@ -37,6 +37,8 @@ def donor_view_post(request):
         return Response(serializer.errors ,status = status.HTTP_400_BAD_REQUEST)
 
 @swagger_auto_schema('GET', responses = {200: DonorSerializer, 404: "Donor Doesn't Exist" } )
+@swagger_auto_schema('PUT', request_body = DonorSerializer, responses={200: "Successfully Updated", 404: "You Cannot update some other donor's data" }, operation_summary="Update Existing Donor")
+@swagger_auto_schema('DELETE', request_body = DonorSerializer, responses={200: "Successfully Deleted User", 404: "You Cannot delete some other donor's data" }, operation_summary="Delete Existing Donor")
 @api_view(http_method_names=['GET','PUT','DELETE']) #manages the request in a way that is useable by other rest frameworks
 def donor_detail_view(request, pk):
     try:
@@ -64,7 +66,7 @@ def donor_detail_put(request, pk, donor):
             return Response(serializer.errors ,status = status.HTTP_400_BAD_REQUEST)
     else:
         data={'message' : "You Cannot update some other donor's data"}
-        return Response(data)
+        return Response(data, status = status.HTTP_400_BAD_REQUEST)
 
 def donor_detail_delete(request, pk, donor):
     if request.user.pk == pk:

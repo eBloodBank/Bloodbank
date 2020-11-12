@@ -42,10 +42,15 @@
 
                     <div class="buttons_container">
                         <div class="clearfix">
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'logout' %}" class="myButton">
+                                <span class="fa fa-lock"></span>&nbsp;Logout</a>
+                            {% else %}
                             <a href="{% url 'register' %}" class="myButton">
                                 <span class="fa fa-user-circle-o" aria-hidden="true"></span>&nbsp;Register</a>
                             <a href="{% url 'login' %}" class="myButton">
                                 <span class="fa fa-lock"></span>&nbsp;Login</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -69,18 +74,18 @@
 
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/bloodbank">Blood Bank</a></li>
-                                <li><a href="/about">About</a></li>
-                                <li><a href="/causes">Camps</a></li>
-                                <li><a href="/events">Events</a></li>
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'schema-swagger-ui' %}">API Docs</a></li>
+                                <li><a href="{% url 'bloodbanks-list' %}">Blood Banks</a></li>
+                                <li><a href="{% url 'bloodDonationEvents-list' %}">Camps</a></li>
                                 <li><a href="/news">News</a></li>
                                 <!-- <li><a href="/videos">Blah BLah</a></li> -->
                                 <li class="dropdown"><a href="#">More</a>
                                     <ul>
                                         <li><a href="/about">About Us</a></li>
-                                        <li><a href="/RequestBlood">Request Blood</a></li>
-                                        <li><a href="/donations">Donations</a></li>
+                                        <li><a href="{% url 'bloodbank-create' %}">Request Blood</a></li>
+                                        <li><a href="{% url 'bloodbank-create' %}">Register Blood Bank</a></li>
                                         <li><a href="/ContactUs/Other">Contact Us</a></li>
                                     </ul>
                                     <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
@@ -117,7 +122,7 @@
                         </ul>
                     </div>
                     <div class="col-md-6 item text">
-                        <h3>Company Name</h3>
+                        <h3>Blood Bank Management System</h3>
                         <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula
                             rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum
                             vel in justo.</p>
