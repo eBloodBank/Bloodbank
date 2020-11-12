@@ -45,7 +45,6 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 class BloodDonationEventViewSet(viewsets.ModelViewSet):
-    http_method_names = ["get",'post']
     queryset = BloodDonationEvent.objects.all()
     serializer_class = BloodDonationEventSerializer
 

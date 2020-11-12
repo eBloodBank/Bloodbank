@@ -31,6 +31,6 @@ urlpatterns = [
     path('bloodbank/<int:pk>', BloodBankDetailView.as_view(), name='bloodbanks-detail'),
     path('bloodbank/<int:pk>/update/', BloodBankUpdateView.as_view(), name='bloodbanks-update'),
     path('bloodbank/<int:pk>/delete/', BloodBankDeleteView.as_view(), name='bloodbanks-delete'), 
-    path('bloodDonationEvents/', BloodDonationEventListView.as_view(), name='bloodDonationEvent-list'),
-    path('bloodDonationEvent/new', BloodDonationEventCreateView.as_view(), name='bloodDonationEvent-create'),
+    path('bloodDonationEvents/', BloodDonationEventListView.as_view(), name='bloodDonationEvents-list'),
+    path('bloodDonationEvent/new', BloodDonationEventCreateView.as_view(), name='bloodDonationEvents-create'),
 ]
