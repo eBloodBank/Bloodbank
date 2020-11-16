@@ -4,6 +4,22 @@ from user.models import User
 from rest_framework.response import Response
 from .serializers import BloodBankSerializer, UserSerializer, BloodPacketSerializer, BloodDonationEventSerializer
 from rest_framework import status
+from rest_framework.decorators import api_view
+from drf_yasg.utils import swagger_auto_schema
+
+@swagger_auto_schema('GET', responses = {200: BloodBankSerializer(many=True)}, operation_summary="Get City Filtered Bloodbanks", operation_id="bloodbanks_city" )
+@api_view(http_method_names=['GET']) #manages the request in a way that is useable by other rest frameworks
+def bloodbanks_city(request, city):
+    data = BloodBank.objects.filter(city=city)
+    serializer = BloodBankSerializer(data, many=True)
+    return Response(data=serializer.data)
+
+@swagger_auto_schema('GET', responses = {200: BloodBankSerializer(many=True)}, operation_summary="Get State Filtered Bloodbanks",operation_id="bloodbanks_state" )
+@api_view(http_method_names=['GET']) #manages the request in a way that is useable by other rest frameworks
+def bloodbanks_state(request, state):
+    data = BloodBank.objects.filter(state=state)
+    serializer = BloodBankSerializer(data, many=True)
+    return Response(data=serializer.data)
 
 class BloodBankViewSet(viewsets.ModelViewSet):
     queryset = BloodBank.objects.all()
