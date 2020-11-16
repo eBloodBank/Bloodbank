@@ -1,0 +1,16 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+{% for order in orders %}
+
+<h1> Order of packetID:  {{order.packetID}} </h1>
+
+<h3> Blood Bank : {{order.bloodBank.name}} <br>
+    Bought By : {{order.boughtBy.first_name}} <br>
+    Amount : {{order.amount}} <br>
+</h3>
+<h2>------------------------------------------------------------------------------</h2>
+{% endfor %}
+
+{% endblock content %}

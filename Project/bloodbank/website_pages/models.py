@@ -11,6 +11,7 @@ class BloodPacket(models.Model):
     quantity = models.IntegerField(default=250)
     Blood_bank = models.ForeignKey('BloodBank', on_delete=models.CASCADE, blank=True,
         null=True)
+    price = models.FloatField(default=500.0)
 
     def __str__(self):
         return self.packetID
@@ -33,6 +34,9 @@ class BloodBank(models.Model):
     BloodPackets = models.ManyToManyField(BloodPacket, blank=True)
     BloodBankAdmin = models.ForeignKey(User,on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
 class BloodDonationEvent(models.Model):
     organizedBy = models.ForeignKey(BloodBank,on_delete=models.CASCADE)
     date = models.DateField()
@@ -42,3 +46,21 @@ class BloodDonationEvent(models.Model):
     state = models.CharField(max_length=70)
     district = models.CharField(max_length=70)
     contactNo = models.CharField(max_length=15)
+
+    def __str__(self):
+        return self.campName
+    
+class Order(models.Model):
+    packetID = models.CharField(max_length=25)
+    bloodBank = models.ForeignKey(BloodBank, on_delete=models.CASCADE)
+    boughtBy = models.ForeignKey(User, on_delete=models.CASCADE)
+    amount = models.FloatField() 
+    
+    def __str__(self):
+        return self.packetID
+
+class Donation(models.Model):
+    donor = models.ForeignKey(User, on_delete=models.CASCADE)
+    bloodBank = models.ForeignKey(BloodBank, on_delete=models.CASCADE)
+    date = models.DateField()
+    
