@@ -1,23 +1,13 @@
+{% extends "./base.html" %}
 {% load static %}
-{% load fullurl %}
-<html>
-<head>
-    <title>Your Website Title</title>
-    <!-- You can use Open Graph tags to customize link previews.
-    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-    <meta property="og:url"           content="http://127.0.0.1:8000/" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Blood Donation" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="{% static '../../static/website_pages/awp2.png'  %}" /> 
-</head>
 
+{% block content %}
 <div id="fb-root"></div>
 
 <div class="fb-quotable">
-    <h1> {{object.name}} </h1>
+    <h1> Blood Bank Name: {{object.name}} </h1>
 
-    <h3> {{object.state}} </h3>
+    <h3> state: {{object.state}} </h3>
     {% for bloodpacket in object.BloodPackets.all %}
         <h3> {{bloodpacket.packetID}} </h3>
     {% endfor %}
@@ -29,21 +19,5 @@
 {% endif %}
 
 
-<div class="fb-like" data-href="{% fullurl 'bloodbanks-detail' object.id %}" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
-<div class="fb-comments" data-href="{% fullurl 'bloodbanks-detail' object.id %}" data-numposts="6" data-width=""></div>
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0" nonce="tl3RWCEM"></script>
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0" nonce="8L9flHy2"></script>
-
-<div class="fb-quote"></div>
-
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
+  {% endblock %}

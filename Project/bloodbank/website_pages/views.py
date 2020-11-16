@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from .models import BloodBank, BloodPacket, BloodDonationEvent
+from django.shortcuts import render,get_object_or_404,redirect
+from .models import BloodBank, BloodPacket, BloodDonationEvent, Order, Donation
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.forms.models import inlineformset_factory
 from django.urls import reverse
+import json
+from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def home(request):
@@ -11,6 +13,26 @@ def home(request):
 def about(request):
     return render(request,'website_pages/about.html', {'title': 'About Page'})
 
+class BloodPacketListView(ListView):
+    model = BloodPacket
+    template_name = 'website_pages/bloodpacketlist.html'
+    context_object_name = 'bloodpackets'
+
+    def get_queryset(self): # new
+        bloodgroupz = self.request.GET.get('bloodgroupz')
+
+        if bloodgroupz is None:
+            object_list = BloodPacket.objects.all()
+            return object_list
+        
+        bg = next(filter(lambda x: x[1]==bloodgroupz, BloodPacket.BLOOD_GROUPS))
+        print(bg)
+
+        object_list = BloodPacket.objects.filter(bloodGroup=bg[0])
+        return object_list
+
+class BloodPacketDetailView(DetailView):
+    model = BloodPacket
 
 class BloodDonationEventListView(ListView):
     model = BloodDonationEvent
@@ -35,11 +57,20 @@ class BloodBankListView(ListView):
     model = BloodBank
     template_name = 'website_pages/bloodbanklist.html'
     context_object_name = 'bloodbanks'
+
+    def get_queryset(self): # new
+        cityz = self.request.GET.get('cityz')
+        if cityz is None:
+            object_list = BloodBank.objects.all()
+            return object_list
+
+        object_list = BloodBank.objects.filter(city=cityz)
+        return object_list
     
 class BloodBankDetailView(DetailView):
     model = BloodBank
 
-BloodPacketFormset = inlineformset_factory(BloodBank, BloodPacket, fields=('packetID', 'bloodGroup', 'expiryDate', 'quantity'))
+BloodPacketFormset = inlineformset_factory(BloodBank, BloodPacket, fields=('packetID', 'bloodGroup', 'expiryDate', 'quantity', 'price'))
 class BloodBankCreateView(LoginRequiredMixin, CreateView):
     model = BloodBank    
     fields = ['name', 'district', 'city', 'state', 'category', 'contactNo', 'email', 'PostalAddress' ]
@@ -68,12 +99,12 @@ class BloodBankCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('bloodbank-list')
+        return reverse('bloodbanks-list')
 
 class BloodBankUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = BloodBank
     fields = ['name', 'district', 'city', 'state', 'category', 'contactNo', 'email', 'PostalAddress' ]
-
+    template_name = 'website_pages/BloodBank_form.html'
     def get_context_data(self, **kwargs):
         # we need to overwrite get_context_data
         # to make sure that our formset is rendered.
@@ -106,7 +137,7 @@ class BloodBankUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return False
 
     def get_success_url(self):
-        return reverse('bloodbank-list')
+        return reverse('bloodbanks-list')
 
 class BloodBankDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = BloodBank
@@ -118,3 +149,43 @@ class BloodBankDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+def paymentComplete(request):
+    body = json.loads(request.body)
+    print('BODY', body)
+    bloodpacket = BloodPacket.objects.get(pk=body['packetpk'])
+    Order.objects.create(packetID=bloodpacket.packetID, bloodBank=bloodpacket.Blood_bank
+    , boughtBy=request.user, amount = bloodpacket.price)
+    bloodpacket.delete()
+    return JsonResponse('Payment Completed', safe=False)
+
+class UserOrderListView(ListView, LoginRequiredMixin):
+    model = Order
+    template_name = 'website_pages/orders.html'
+    context_object_name = 'orders'
+
+    def get_queryset(self):     # Return trips of a specific user 
+        user = self.request.user
+        return Order.objects.filter(boughtBy=user)
+    
+class DonationCreateView(LoginRequiredMixin, CreateView): # Creating a trip Logic 
+    model = Donation
+    fields = ['bloodBank','date']
+
+    def form_valid(self,form):
+        form.instance.donor = self.request.user
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse('user-donations')
+    
+class UserDonationListView(ListView, LoginRequiredMixin):
+    model = Donation
+    template_name = 'website_pages/donations.html'
+    context_object_name = 'donations'
+
+    def get_queryset(self):     # Return trips of a specific user 
+        user = self.request.user
+        return Donation.objects.filter(donor=user)
+    
+class DonationDetailView(DetailView):
+    model = Donation

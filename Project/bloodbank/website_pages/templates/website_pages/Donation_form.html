@@ -56,10 +56,11 @@
 </head>
 {{ form.errors }}
 <div class="container">
+    <h2>New Donation Request</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-         <button type="submit" class="registerbtn">Create Event</button>
+         <button type="submit" class="registerbtn">Create BLoodbank</button>
     </form>
     
 </div>

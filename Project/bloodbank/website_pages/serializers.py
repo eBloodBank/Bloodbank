@@ -3,7 +3,25 @@ from .models import BloodBank, BloodPacket, BloodDonationEvent
 from user.models import User
 from rest_framework.fields import CurrentUserDefault
 
+class ChoiceField(serializers.ChoiceField):
+
+    def to_representation(self, obj):
+        if obj == '' and self.allow_blank:
+            return obj
+        return self._choices[obj]
+
+    def to_internal_value(self, data):
+        # To support inserts with the value
+        if data == '' and self.allow_blank:
+            return ''
+
+        for key, val in self._choices.items():
+            if val == data:
+                return key
+        self.fail('invalid_choice', input=data)
+
 class BloodPacketSerializer(serializers.ModelSerializer):
+    bloodGroup = ChoiceField(choices=BloodPacket.BLOOD_GROUPS)
     class Meta:
         model = BloodPacket
         fields = '__all__'
@@ -14,6 +32,7 @@ class BloodDonationEventSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class BloodBankSerializer(serializers.ModelSerializer):
+    category = ChoiceField(choices=BloodBank.CATEGORY)
     BloodPackets = BloodPacketSerializer(many=True)
     class Meta:
         model = BloodBank
@@ -23,7 +42,7 @@ class BloodBankSerializer(serializers.ModelSerializer):
         bloodpackets_data = validated_data.pop('BloodPackets')
         BloodBankz = BloodBank.objects.create(**validated_data)
         user = self.context['request'].user
-        print(user)
+        #print(user)
         BloodBankz.BloodBankAdmin = user
         BloodBankz.save()
         for bloodpacket_data in bloodpackets_data:

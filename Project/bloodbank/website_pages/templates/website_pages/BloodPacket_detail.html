@@ -1,0 +1,87 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1> Blood Packet Id:  {{bloodpacket.packetID}} </h1>
+
+<h3> Blood Bank: {{bloodpacket.Blood_bank.name}} <br>
+    City: {{bloodpacket.Blood_bank.city}} <br>
+    Price : Rs {{ bloodpacket.price }}/- <br>
+    Type :{{bloodpacket.get_bloodGroup_display}} <br>
+</h3> 
+<!-- Set up a container element for the button -->
+<!-- Set up a container element for the button -->
+<div id="paypal-button-container"></div>
+
+<!-- Include the PayPal JavaScript SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=AXt9RVZFLkW9EEmAi-WWCOHdrXFnWdfGhTAuEmJVIOUPjWoPzTlD_AAvrDLaMi2tD4PSzlGVJ3Boymfh&currency=USD"></script>
+
+<script>
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    var total = '{{ bloodpacket.price }}'
+    var packetpk = '{{ bloodpacket.pk }}'
+
+    function completeOrder(){
+        var url = "{% url 'complete' %}"
+        fetch (url, {
+            method: 'POST',
+            headers:{
+                'Content-type':'application/json',
+                'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({'packetpk': packetpk})
+        })
+    }
+    // Render the PayPal button into #paypal-button-container
+    paypal.Buttons({
+
+        style: {
+                color:  'gold',
+                shape:  'pill',
+                label:  'pay',
+                height: 40,
+                size : 'responsive'
+            },
+
+        // Set up the transaction
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: total
+                    }
+                }]
+            });
+        },
+
+        // Finalize the transaction
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                // Show a success message to the buyer
+                completeOrder()
+                alert('Transaction completed by ' + details.payer.name.given_name + '!' + 'Click on My orders to view your order.');
+            });
+        }
+
+
+    }).render('#paypal-button-container');
+</script>
+{% endblock content %}

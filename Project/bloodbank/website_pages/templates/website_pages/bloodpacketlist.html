@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>------------------------------------------------------------------------------</h2>
+
+<form action="{% url 'bloodpackets-list' %}" method="get">
+    <input  name="bloodgroupz" type="text" placeholder="Enter Blood Group">
+    <button  type="submit">Search </button>
+</form>
+<h2>------------------------------------------------------------------------------</h2>
+{% for bloodpacket in bloodpackets %}
+
+<h1> Blood Packet Id: <a href="{% url 'bloodpackets-detail' bloodpacket.id %}"> {{bloodpacket.packetID}} </a></h1>
+
+<h3> Blood Bank: {{bloodpacket.Blood_bank.name}} <br>
+    City: {{bloodpacket.Blood_bank.city}} <br>
+    Type: {{bloodpacket.get_bloodGroup_display}} <br>
+</h3>    
+
+<h2>------------------------------------------------------------------------------</h2>
+{% empty %}
+            <li class="media content-section">Sorry, no blood packets in this list. Search is Case Sensitive.
+            </li>
+{% endfor %}
+
+{% endblock content %}

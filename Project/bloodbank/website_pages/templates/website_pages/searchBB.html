@@ -2,15 +2,14 @@
 {% load static %}
 
 {% block content %}
-<h2>------------------------------------------------------------------------------</h2>
 
-<form action="{% url 'bloodbanks-list' %}" method="get">
+<form action="{% url 'search_results' %}" method="get">
     <input  name="cityz" type="text" placeholder="Enter City">
     <button  type="submit">Search </button>
 </form>
-<h2>------------------------------------------------------------------------------</h2>
-{% for bloodbank in bloodbanks %}
 
+
+{% for bloodbank in bloodbanks %}
 <h1> Blood Bank Name: <a href="{% url 'bloodbanks-detail' bloodbank.id %}"> {{bloodbank.name}} </a></h1>
 
 <h3> State: {{bloodbank.state}} <br>
@@ -22,14 +21,16 @@
         ID:{{bloodpacket.bloodGroup}} 
         Quantity:{{bloodpacket.quantity}} 
         Expiry Date: {{bloodpacket.expiryDate }}
-    </p> 
+</p> 
 
     
 {% endfor %}
 <h2>------------------------------------------------------------------------------</h2>
-{% empty %}
-            <li class="media content-section">Sorry, no bloodbanks in this list. Search is Case Sensitive.
-            </li>
 {% endfor %}
 
+{% empty %}
+    <li class="media content-section">Sorry, no trips in this list. Search is Case Sensitive. Our
+      Search page uses Sub-routing Algorithm for capital cities in India. It will show you all the 
+      trips which you can join since your route would be part of those trips. 
+    </li>
 {% endblock content %}
