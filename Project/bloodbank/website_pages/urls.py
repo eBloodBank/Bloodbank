@@ -9,6 +9,7 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
    openapi.Info(
+
       title="Blood Bank Mangement System API",
       default_version='v1',
       description="Get information about the Blood Banks, Blood Donors or Blood Donation Events for your city. You can filter the information by blood group or location.",
@@ -17,6 +18,7 @@ schema_view = get_schema_view(
       license=openapi.License(name="BSD License"),
    ),
    public=True,
+   
    permission_classes=(permissions.AllowAny,),
 )
 

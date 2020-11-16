@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from drf_yasg.utils import swagger_auto_schema
 
 #packages appropiately the request for function based view
-@swagger_auto_schema('GET', responses = {200: DonorSerializer(many=True)}, operation_summary="Get list of Donors" )
+@swagger_auto_schema('GET', responses = {200: DonorSerializer(many=True)}, operation_summary="GET list of Donors" )
 @swagger_auto_schema('POST', request_body = DonorSerializer, responses={200: "Successfully Registered", 404: "Bad Request" }, operation_summary="Create New Donor")
 @api_view(http_method_names=['GET','POST']) #manages the request in a way that is useable by other rest frameworks
 def donor_list_view(request):
@@ -15,6 +15,21 @@ def donor_list_view(request):
         return donor_list_view_get(request)
     elif request.method == 'POST':
         return donor_view_post(request)
+
+@swagger_auto_schema('GET', responses = {200: DonorSerializer(many=True)}, operation_summary="GET City Filtered Donors", operation_id="donors_city"  )
+@api_view(http_method_names=['GET']) #manages the request in a way that is useable by other rest frameworks
+def donors_city(request, city):
+    data = User.objects.filter(city=city)
+    serializer = DonorSerializer(data, many=True)
+    return Response(data=serializer.data)
+
+@swagger_auto_schema('GET', responses = {200: DonorSerializer(many=True)}, operation_summary="GET State Filtered Donors" ,operation_id="donors_state" )
+@api_view(http_method_names=['GET']) #manages the request in a way that is useable by other rest frameworks
+def donors_state(request, state):
+    data = User.objects.filter(state=state)
+    serializer = DonorSerializer(data, many=True)
+    return Response(data=serializer.data)
+
 
 def donor_list_view_get(request):
     try:

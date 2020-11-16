@@ -18,6 +18,19 @@ class BloodPacketListView(ListView):
     template_name = 'website_pages/bloodpacketlist.html'
     context_object_name = 'bloodpackets'
 
+    def get_queryset(self): # new
+        bloodgroupz = self.request.GET.get('bloodgroupz')
+
+        if bloodgroupz is None:
+            object_list = BloodPacket.objects.all()
+            return object_list
+        
+        bg = next(filter(lambda x: x[1]==bloodgroupz, BloodPacket.BLOOD_GROUPS))
+        print(bg)
+
+        object_list = BloodPacket.objects.filter(bloodGroup=bg[0])
+        return object_list
+
 class BloodPacketDetailView(DetailView):
     model = BloodPacket
 
@@ -44,6 +57,15 @@ class BloodBankListView(ListView):
     model = BloodBank
     template_name = 'website_pages/bloodbanklist.html'
     context_object_name = 'bloodbanks'
+
+    def get_queryset(self): # new
+        cityz = self.request.GET.get('cityz')
+        if cityz is None:
+            object_list = BloodBank.objects.all()
+            return object_list
+
+        object_list = BloodBank.objects.filter(city=cityz)
+        return object_list
     
 class BloodBankDetailView(DetailView):
     model = BloodBank
