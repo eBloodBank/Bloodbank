@@ -1,0 +1,17 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block content %}
+{% for bloodpacket in bloodpackets %}
+
+<h1> Blood Packet Id: <a href="{% url 'bloodpackets-detail' bloodpacket.id %}"> {{bloodpacket.packetID}} </a></h1>
+
+<h3> Blood Bank: {{bloodpacket.Blood_bank.name}} <br>
+    City: {{bloodpacket.Blood_bank.city}} <br>
+    Type: {{bloodpacket.bloodGroup}} <br>
+</h3>    
+
+<h2>------------------------------------------------------------------------------</h2>
+{% endfor %}
+
+{% endblock content %}

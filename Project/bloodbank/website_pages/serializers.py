@@ -23,7 +23,7 @@ class BloodBankSerializer(serializers.ModelSerializer):
         bloodpackets_data = validated_data.pop('BloodPackets')
         BloodBankz = BloodBank.objects.create(**validated_data)
         user = self.context['request'].user
-        print(user)
+        #print(user)
         BloodBankz.BloodBankAdmin = user
         BloodBankz.save()
         for bloodpacket_data in bloodpackets_data:

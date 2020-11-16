@@ -2,10 +2,12 @@
 {% load static %}
 
 {% block content %}
-{% for event in bloodDonationEvents %}
-<h1>Camp Name: <a href="{% url 'bloodbanks-detail' event.organizedBy.id %}">  {{ event.organizedBy.name }} </a></h1>
+{% for donation in donations %}
 
-<h4> Venue: {{event.venue}} </h4>
+<h1> Donation at:  <a href="{% url 'donations-detail' donation.id %}">{{donation.bloodBank.name}} </a> </h1>
+
+<h3> Donation On : {{donation.date}} <br>
+</h3>
 <h2>------------------------------------------------------------------------------</h2>
 {% endfor %}
 
