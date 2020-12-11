@@ -8,6 +8,7 @@
     <h1> Blood Bank Name: {{object.name}} </h1>
 
     <h3> state: {{object.state}} </h3>
+    <h4>Blood Packets Available in this blood bank are:</h4><br>
     {% for bloodpacket in object.BloodPackets.all %}
         <h3> {{bloodpacket.packetID}} </h3>
     {% endfor %}
