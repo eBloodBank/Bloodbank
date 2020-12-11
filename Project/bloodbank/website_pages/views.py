@@ -51,7 +51,7 @@ class BloodDonationEventCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        return reverse('bloodDonationEvent-list')
+        return reverse('bloodDonationEvents-list')
 
 class BloodBankListView(ListView):
     model = BloodBank
