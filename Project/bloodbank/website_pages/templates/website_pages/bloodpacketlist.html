@@ -1,31 +1,49 @@
 {% extends "./base.html" %}
 {% load static %}
 
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
+
+{% endblock links %}
 {% block content %}
-<h2>------------------------------------------------------------------------------</h2>
+<div class="container">
 
-<form action="{% url 'bloodpackets-list' %}" method="get">
+    <div class="container2 demo animated">
+        <h1>Blood Packets</h1>
 
-    <input name="bloodgroupz" type="text" placeholder="Enter Blood Group">
-    <button type="submit">Search </button>
+    </div>
 
-</form>
-<h2>------------------------------------------------------------------------------</h2>
-{% for bloodpacket in bloodpackets %}
+    <form action="{% url 'bloodpackets-list' %}" method="get">
+        <input class="glow-on-hover" name="bloodgroupz" type="text" placeholder="Enter Blood Group">
+        <button class="glow-on-hover" type="submit">Search </button>
+    </form>
 
-<h1> Blood Packet Id: <a href="{% url 'bloodpackets-detail' bloodpacket.id %}"> {{bloodpacket.packetID}} </a></h1>
 
-<h3> Blood Bank: {{bloodpacket.Blood_bank.name}} <br>
-    City: {{bloodpacket.Blood_bank.city}} <br>
-    Type: {{bloodpacket.get_bloodGroup_display}} <br>
-
-</h3>
-
-<h2>------------------------------------------------------------------------------</h2>
-{% empty %}
-<li class="media content-section">Sorry, no blood packets in this list. Search is Case Sensitive.
-</li>
-
-{% endfor %}
-
+    <table class="bloodbank-table">
+        <tr>
+            <th class="table-headers">PacketID</th>
+            <th class="table-headers">Blood Bank Name </th>
+            <th class="table-headers">City</th>
+            <th class="table-headers">Blood Group</th>
+            <th class="table-headers">Address</th>
+            
+        </tr>
+        {% for bloodpacket in bloodpackets %}
+        <tr>
+            <td class="table-content"><a href="{% url 'bloodpackets-detail' bloodpacket.id %}"> {{bloodpacket.packetID}} </a>
+            </td>
+            <td class="table-content">{{bloodpacket.Blood_bank.name}}</td>
+            <td class="table-content">{{bloodpacket.Blood_bank.city}}</td>
+            <td class="table-content">{{bloodpacket.get_bloodGroup_display}}</td>
+            <td class="table-content">{{bloodpacket.Blood_bank.PostalAddress}}</td>
+        </tr>
+        {% empty %}
+        <li class="media content-section">Sorry, no blood packets in this list. Search is Case Sensitive.
+        </li>
+        {% endfor %}
+        
+    </table>
+</div>
 {% endblock content %}
+
+

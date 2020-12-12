@@ -1,6 +1,9 @@
 {% extends "./base.html" %}
 {% load static %}
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
 
+{% endblock links %}
 {% block content %}
 
 <head>
@@ -66,7 +69,7 @@
         {{ form.as_p }}
         <h2>Blood inventory</h2>
         {{ BloodPacketz.as_p }}
-        <button type="submit" class="registerbtn">Create BLoodbank</button>
+        <button class="glow-on-hover" type="submit" class="registerbtn">Create Bloodbank</button>
     </form>
 
 </div>

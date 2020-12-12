@@ -1,18 +1,35 @@
 {% extends "./base.html" %}
 {% load static %}
 
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
+
+{% endblock links %}
 {% block content %}
-{% for order in orders %}
+<div class="container">
 
+    <div class="container2 demo animated">
+        <h1>My Orders</h1>
 
-<h1> Order of packetID: {{order.packetID}} </h1>
-
-
-<h3> Blood Bank : {{order.bloodBank.name}} <br>
-    Bought By : {{order.boughtBy.first_name}} <br>
-    Amount : {{order.amount}} <br>
-</h3>
-<h2>------------------------------------------------------------------------------</h2>
-{% endfor %}
-
+    </div>
+    <table class="bloodbank-table">
+        <tr>
+            <th class="table-headers">Order of packetID</th>
+            <th class="table-headers">Blood Bank</th>
+            <th class="table-headers">Amount</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td class="table-content">{{order.packetID}}</h1>
+            </td>
+            <td class="table-content">{{order.bloodBank.name}} </a></td>
+            <td class="table-content">{{order.amount}} </a></td>
+        </tr>
+        {% empty %}
+            <li class="media content-section">Sorry, no donations in this list
+            </li>
+        {% endfor %}
+        
+    </table>
+</div>
 {% endblock content %}
