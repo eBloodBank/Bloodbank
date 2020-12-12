@@ -3,6 +3,7 @@
 
 {% block content %}
 
+
 <head>
     <style>
         * {
@@ -56,6 +57,7 @@
         .signin {
             background-color: #f1f1f1;
             text-align: center;
+
         }
     </style>
 </head>
@@ -65,9 +67,12 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+
         <button type="submit" class="registerbtn">Create BLoodbank</button>
     </form>
 
 </div>
 
 {% endblock content %}
+
+         

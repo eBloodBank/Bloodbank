@@ -4,7 +4,9 @@
 {% block content %}
 {% for event in bloodDonationEvents %}
 <h1> Camp Name : {{ event.campName }}</h1>
+
 <h1>Organized By: <a href="{% url 'bloodbanks-detail' event.organizedBy.id %}"> {{ event.organizedBy.name }} </a></h1>
+
 
 <h4> Venue: {{event.venue}} </h4><br>
 <h4> Date : {{ event.date }}</h4>

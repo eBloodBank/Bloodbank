@@ -5,3 +5,4 @@ admin.site.register(BloodBank)
 admin.site.register(BloodPacket)
 admin.site.register(Order)
 admin.site.register(BloodDonationEvent)
+

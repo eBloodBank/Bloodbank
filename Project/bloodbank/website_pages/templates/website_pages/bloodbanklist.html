@@ -1,13 +1,16 @@
 {% extends "./base.html" %}
 {% load static %}
+
 {% block links %}
 <link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
+
 {% endblock links %}
 {% block content %}
 <div class="container">
 
     <div class="container2 demo animated">
         <h1>Blood Banks</h1>
+
     </div>
 
     <form action="{% url 'bloodbanks-list' %}" method="get">
@@ -38,6 +41,7 @@
         {% endfor %}
     </table>
     <!-- {% for bloodbank in bloodbanks %}
+
 
 <h1> Blood Bank Name: <a href="{% url 'bloodbanks-detail' bloodbank.id %}"> {{bloodbank.name}} </a></h1>
 

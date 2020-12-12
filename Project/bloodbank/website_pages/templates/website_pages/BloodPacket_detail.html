@@ -1,5 +1,6 @@
 {% extends "./base.html" %}
 {% load static %}
+
 {% block links %}
 <link rel="stylesheet" href="../../static/website_pages/styles/order.css">
 {% endblock links %}
@@ -27,6 +28,7 @@
 </script>
 
 <script>
+
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -46,6 +48,7 @@
 
     var total = '{{ bloodpacket.price }}'
     var packetpk = '{{ bloodpacket.pk }}'
+
 
     function completeOrder() {
         var url = "{% url 'complete' %}"
@@ -73,6 +76,7 @@
 
         // Set up the transaction
         createOrder: function (data, actions) {
+
             return actions.order.create({
                 purchase_units: [{
                     amount: {
@@ -83,12 +87,14 @@
         },
 
         // Finalize the transaction
+
         onApprove: function (data, actions) {
             return actions.order.capture().then(function (details) {
                 // Show a success message to the buyer
                 completeOrder()
                 alert('Transaction completed by ' + details.payer.name.given_name + '!' +
                     'Click on My orders to view your order.');
+
             });
         }
 

@@ -1,8 +1,10 @@
 {% extends "./base.html" %}
 {% load static %}
+
 {% block links %}
 <link rel="stylesheet" href="../../static/website_pages/styles/bloodbankdetails.css">
 {% endblock links %}
+
 {% block content %}
 <div id="fb-root"></div>
 
@@ -31,6 +33,5 @@
 <h3 class="links"><a href="{% url 'bloodbanks-delete' object.id %}">Delete</a></h3>
 {% endif %}
 
-
-
 {% endblock %}
+

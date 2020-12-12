@@ -3,6 +3,7 @@
 {% load fullurl %}
 {% block links %}
 
+
 <head>
     <!-- You can use Open Graph tags to customize link previews.
     Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
@@ -15,7 +16,9 @@
 {% endblock links %}
 
 {% block content %}
+
 <h1> Donation at: {{object.bloodBank.name}} </h1>
+
 
 <h3> Donation On : {{object.date}} <br>
     Donation By : {{object.donor.first_name}} <br>
@@ -23,12 +26,15 @@
 </h3>
 <h2>------------------------------------------------------------------------------</h2>
 
+
 <div class="fb-like" data-href="{% fullurl 'donations-detail' object.id %}" data-width="" data-layout="button_count"
     data-action="like" data-size="large" data-share="true"></div>
+
 <br>
 <div class="fb-comments" data-href="{% fullurl 'donations-detail' object.id %}" data-numposts="6" data-width=""></div>
 
 <div id="fb-root"></div>
+
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v9.0"
     nonce="tl3RWCEM"></script>
 
@@ -48,5 +54,6 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
+
 
 {% endblock content %}
