@@ -1,0 +1,35 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container-buy-list{
+    width: 33.33%;
+    height: 50vh;
+    margin-left: 20px;
+    
+}
+
+#order-details{
+    border: 1px solid black ;
+    border-radius: 4px;
+}
+
+#id{
+    margin: 3px;
+    font-weight: 600;
+}
+
+#type{
+    font-weight: 600;
+}
+
+#details{
+    margin-bottom: 3px;
+    padding: 10px;
+}
+
+#paypal-button-container{
+    margin-top: 5px;
+    width: 50%;
+}

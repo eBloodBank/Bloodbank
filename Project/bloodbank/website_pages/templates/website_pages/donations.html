@@ -4,11 +4,11 @@
 {% block content %}
 {% for donation in donations %}
 
-<h1> Donation at:  <a href="{% url 'donations-detail' donation.id %}">{{donation.bloodBank.name}} </a> </h1>
+<h1> Donation at: <a href="{% url 'donations-detail' donation.id %}">{{donation.bloodBank.name}} </a> </h1>
 
 <h3> Donation On : {{donation.date}} <br>
 </h3>
-<h2>------------------------------------------------------------------------------</h2>
+
 {% endfor %}
 
 {% endblock content %}

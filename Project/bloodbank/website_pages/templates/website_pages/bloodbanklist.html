@@ -1,265 +1,47 @@
 {% extends "./base.html" %}
 {% load static %}
-{% block links %} 
-<style>
-	body {
-    
 
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
 
-
-  }
-  .container2 {
-      margin: auto;
-      
-      outline: 1px solid black;
-      border: 20px solid transparent;
-      box-sizing: border-box;
-      text-transform: uppercase;
-      font-weight: 900;
-      font-family: "Open Sans","Source Sans Pro",Helvetica,sans-serif;
-      font-size: 1em;
-      letter-spacing: 1em;
-      padding: 1rem;
-      display:flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 25px;
-      margin-top: 15px;
-    }
-
-    .demo {
-      /*background-image:
-        linear-gradient(white, white),
-        linear-gradient(180deg, cornflowerblue, purple);*/
-
-      background-image:
-        linear-gradient(white, white),
-        linear-gradient(270deg, #00D7B9, #B95DD7 50%, #FFB367 100%);
-
-      background-repeat: no-repeat;
-      background-origin: padding-box, border-box;
-      text-align: center;
-    }
-
-    .animated {
-      background-image:
-        linear-gradient(white, white),
-        linear-gradient(180deg, red, yellow 50%, orange);
-
-      background-repeat: no-repeat;
-      background-size: 100% 100%, 100% 200%;
-      background-position: 0 0, 0 100%;
-      background-origin: padding-box, border-box;
-      animation: highlight 1s infinite alternate;
-    }
-
-    @keyframes highlight {
-      100% {
-        background-position: 0 0, 0 0;
-      }
-    }
-  
-  h1, h2, h3, h4, h5, h6 {
-    color: #444444;
-  }
-  
-  ul {
-    margin: 0;
-  }
-  
-  .bg-steel {
-    background-color: #5f788a;
-  }
-  
-  .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
-  }
-  
-  .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
-  }
-  
-  .site-header .navbar-nav .nav-link.active {
-    font-weight: 500;
-  }
-  
-  .content-section {
-    background: #ffffff; 
-    padding: 10px 20px;
-    border: 1px solid #000000;
-    border-radius: 3px;
-    margin-bottom: 20px;
-    
-  }
-  .content-section-2 {
-    background: #ffffff;
-    padding: 10px 20px;
-    border: 1px solid #dfdddd;
-    border-radius: 3px;
-    margin-bottom: 20px;
-    margin-top: 60px;
-  }
-  
-  .article-title {
-    color: #444444;
-  }
-  
-  a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
-  }
-  
-  .article-content {
-    white-space: pre-line;
-  }
-  
-  .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
-  }
-  
-  .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
-  }
-  
-  .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
-  }
-  
-  .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
-  }
-  
-  .account-heading {
-    font-size: 2.5rem;
-  }
-  .glow-on-hover {
-    width: 220px;
-    height: 50px;
-    border: solid white;
-    outline: none;
-    color: #fff;
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-    margin-right: 15px;
-    padding:10px;
-}
-
-.glow-on-hover:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -2px;
-    left:-2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity .3s ease-in-out;
-    border-radius: 10px;
-}
-
-.glow-on-hover:active {
-    color: #000
-}
-
-.glow-on-hover:active:after {
-    background: transparent;
-}
-
-.glow-on-hover:hover:before {
-    opacity: 1;
-}
-
-.glow-on-hover:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #111;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-}
-
-@keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
-}
-
-.container-4{
-    margin-top: 25px;
-    margin-bottom:30px
-}
-</style>
 {% endblock links %}
 {% block content %}
 <div class="container">
 
     <div class="container2 demo animated">
         <h1>Blood Banks</h1>
-      </div>
-<h2>------------------------------------------------------------------------------</h2>
 
-<form action="{% url 'bloodbanks-list' %}" method="get">
-    <input class="glow-on-hover" name="cityz" type="text" placeholder="Enter City">
-    <button class="glow-on-hover" type="submit">Search </button>
-</form>
-<h2>------------------------------------------------------------------------------</h2>
+    </div>
+
+    <form action="{% url 'bloodbanks-list' %}" method="get">
+        <input class="glow-on-hover" name="cityz" type="text" placeholder="Enter City">
+        <button class="glow-on-hover" type="submit">Search </button>
+    </form>
 
 
-<table>
-    <tr>
-        <th>Name</th>
-        ...
-        <th>City</th>
-        ...
-        <th>State</th>
-        ...
-        <th>Email</th>
-        ...
-        <th>Phone</th>
-        ...
-        <th>Address</th>
-    </tr>
-    {% for bloodbank in bloodbanks %}
-    <tr> 
-        <td><a href="{% url 'bloodbanks-detail' bloodbank.id %}"> {{bloodbank.name}} </a></h1></td>
-        ...
-        <td>{{bloodbank.city}}</td>
-        ...
-        <td>{{bloodbank.state}}</td>
-        ...
-        <td>{{bloodbank.email}}</td>
-        ...
-        <td>{{bloodbank.contactNo}}</td>
-        ...
-        <td>{{bloodbank.PostalAddress}}</td>
-    </tr>
-    {% endfor %}
-</table>
-<!-- {% for bloodbank in bloodbanks %}
+    <table class="bloodbank-table">
+        <tr>
+            <th class="table-headers">Name</th>
+            <th class="table-headers">City</th>
+            <th class="table-headers">State</th>
+            <th class="table-headers">Email</th>
+            <th class="table-headers">Phone</th>
+            <th class="table-headers">Address</th>
+        </tr>
+        {% for bloodbank in bloodbanks %}
+        <tr>
+            <td class="table-content"><a href="{% url 'bloodbanks-detail' bloodbank.id %}"> {{bloodbank.name}} </a></h1>
+            </td>
+            <td class="table-content">{{bloodbank.city}}</td>
+            <td class="table-content">{{bloodbank.state}}</td>
+            <td class="table-content">{{bloodbank.email}}</td>
+            <td class="table-content">{{bloodbank.contactNo}}</td>
+            <td class="table-content">{{bloodbank.PostalAddress}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <!-- {% for bloodbank in bloodbanks %}
+
 
 <h1> Blood Bank Name: <a href="{% url 'bloodbanks-detail' bloodbank.id %}"> {{bloodbank.name}} </a></h1>
 
