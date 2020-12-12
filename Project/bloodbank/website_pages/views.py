@@ -20,11 +20,18 @@ class BloodPacketListView(ListView):
 
     def get_queryset(self): # new
         bloodgroupz = self.request.GET.get('bloodgroupz')
-
+        
         if bloodgroupz is None:
             object_list = BloodPacket.objects.all()
             return object_list
-        
+
+        if bloodgroupz is "":
+            object_list = BloodPacket.objects.all()
+            return object_list
+        if bloodgroupz not in ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']:
+            object_list = BloodPacket.objects.filter(bloodGroup='invalid')
+            return object_list
+            
         bg = next(filter(lambda x: x[1]==bloodgroupz, BloodPacket.BLOOD_GROUPS))
         print(bg)
 
