@@ -4,8 +4,8 @@
 {% block content %}
 
 <form action="{% url 'search_results' %}" method="get">
-    <input  name="cityz" type="text" placeholder="Enter City">
-    <button  type="submit">Search </button>
+    <input name="cityz" type="text" placeholder="Enter City">
+    <button type="submit">Search </button>
 </form>
 
 
@@ -17,20 +17,20 @@
 </h3>
 <h4>Blood Packets Available in this blood bank are:</h4><br>
 {% for bloodpacket in bloodbank.BloodPackets.all %}
-    <p>
-        ID:{{bloodpacket.bloodGroup}} 
-        Quantity:{{bloodpacket.quantity}} 
-        Expiry Date: {{bloodpacket.expiryDate }}
-</p> 
+<p>
+    ID:{{bloodpacket.bloodGroup}}
+    Quantity:{{bloodpacket.quantity}}
+    Expiry Date: {{bloodpacket.expiryDate }}
+</p>
 
-    
+
 {% endfor %}
 <h2>------------------------------------------------------------------------------</h2>
 {% endfor %}
 
 {% empty %}
-    <li class="media content-section">Sorry, no trips in this list. Search is Case Sensitive. Our
-      Search page uses Sub-routing Algorithm for capital cities in India. It will show you all the 
-      trips which you can join since your route would be part of those trips. 
-    </li>
+<li class="media content-section">Sorry, no trips in this list. Search is Case Sensitive. Our
+    Search page uses Sub-routing Algorithm for capital cities in India. It will show you all the
+    trips which you can join since your route would be part of those trips.
+</li>
 {% endblock content %}

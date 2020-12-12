@@ -1,0 +1,39 @@
+.text{
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.bloodbank-name{
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.bloodbank-details{
+    width: 80%;
+    font-size: large;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table-headers{
+    height: 10vh;
+    text-align: center;
+    font-size: 22px;
+    background-color: #ff5722;
+}
+
+.table-content{
+    height: 8vh;
+    border: 0.5px solid black;
+    justify-content: center;
+    text-align: center;
+}
+
+.links{
+    margin-left: 20px;
+    padding: 10px;
+    width: 20%;
+    border: 1px solid cyan;
+    border-radius: 5px;
+}

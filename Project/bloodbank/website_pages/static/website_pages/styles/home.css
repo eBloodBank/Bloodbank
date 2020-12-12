@@ -1,5 +1,4 @@
 * {
-    border: 0;
     margin: 0;
     box-sizing: border-box;
 }
@@ -16,9 +15,11 @@ a:visited {
     text-decoration: none;
     outline: none;
 }
+
 body {
-    font-family: 'Montserrat',sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 #preLoader {
     position: fixed;
     left: 0px;
@@ -57,9 +58,10 @@ body {
     float: left;
     z-index: 10;
 }
+
 .head_bar .inner-container .logo_box .logo img {
     display: inline-block;
-    width: 90px; 
+    width: 90px;
     height: 90px;
     margin-bottom: 2px;
 }
@@ -127,7 +129,7 @@ body {
     margin: 5px;
 }
 
-#empty{
+#empty {
     width: 50%;
     height: 100px;
     padding: 100px;
@@ -138,7 +140,7 @@ body {
     width: 50%
 }
 
-#right-search{
+#right-search {
     margin-top: 255px;
 }
 

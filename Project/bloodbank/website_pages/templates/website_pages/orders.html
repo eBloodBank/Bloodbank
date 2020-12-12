@@ -4,7 +4,7 @@
 {% block content %}
 {% for order in orders %}
 
-<h1> Order of packetID:  {{order.packetID}} </h1>
+<h1> Order of packetID: {{order.packetID}} </h1>
 
 <h3> Blood Bank : {{order.bloodBank.name}} <br>
     Bought By : {{order.boughtBy.first_name}} <br>

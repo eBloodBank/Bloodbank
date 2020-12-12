@@ -5,8 +5,8 @@
 <h2>------------------------------------------------------------------------------</h2>
 
 <form action="{% url 'bloodpackets-list' %}" method="get">
-    <input  name="bloodgroupz" type="text" placeholder="Enter Blood Group">
-    <button  type="submit">Search </button>
+    <input name="bloodgroupz" type="text" placeholder="Enter Blood Group">
+    <button type="submit">Search </button>
 </form>
 <h2>------------------------------------------------------------------------------</h2>
 {% for bloodpacket in bloodpackets %}
@@ -16,12 +16,12 @@
 <h3> Blood Bank: {{bloodpacket.Blood_bank.name}} <br>
     City: {{bloodpacket.Blood_bank.city}} <br>
     Type: {{bloodpacket.get_bloodGroup_display}} <br>
-</h3>    
+</h3>
 
 <h2>------------------------------------------------------------------------------</h2>
 {% empty %}
-            <li class="media content-section">Sorry, no blood packets in this list. Search is Case Sensitive.
-            </li>
+<li class="media content-section">Sorry, no blood packets in this list. Search is Case Sensitive.
+</li>
 {% endfor %}
 
 {% endblock content %}

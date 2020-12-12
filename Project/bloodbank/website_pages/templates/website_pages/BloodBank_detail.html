@@ -1,24 +1,36 @@
 {% extends "./base.html" %}
 {% load static %}
-
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbankdetails.css">
+{% endblock links %}
 {% block content %}
 <div id="fb-root"></div>
 
 <div class="fb-quotable">
-    <h1> Blood Bank Name: {{object.name}} </h1>
-
-    <h3> state: {{object.state}} </h3>
-    <h4>Blood Packets Available in this blood bank are:</h4><br>
-    {% for bloodpacket in object.BloodPackets.all %}
-        <h3> {{bloodpacket.packetID}} </h3>
-    {% endfor %}
+    <div class="text bloodbank-name">{{object.name}} </div>
+    <div class="text bloodbank-state">{{object.state}} </div>
+    <div class="text generic">Blood Packets Available in this blood bank are:</div><br>
+    <div class="table-container d-flex flex-row justify-content-center ">
+        <table class="bloodbank-details">
+            <tr>
+                <th class="table-headers">Blood Group</th>
+                <th class="table-headers">Quantity</th>
+            </tr>
+            {% for bloodpacket in object.BloodPackets.all %}
+            <tr>
+                <td class="table-content">{{bloodpacket.get_bloodGroup_display}} </td>
+                <td class="table-content">{{bloodpacket.quantity}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 
 {% if object.BloodBankAdmin == user %}
-    <h3><a href="{% url 'bloodbanks-update' object.id %}">Update</a></h3>
-    <h3><a href="{% url 'bloodbanks-delete' object.id %}">Delete</a></h3>
+<h3 class="links"><a href="{% url 'bloodbanks-update' object.id %}">Update</a></h3>
+<h3 class="links"><a href="{% url 'bloodbanks-delete' object.id %}">Delete</a></h3>
 {% endif %}
 
 
 
-  {% endblock %}
+{% endblock %}

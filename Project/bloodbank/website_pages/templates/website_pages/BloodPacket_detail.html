@@ -1,24 +1,32 @@
 {% extends "./base.html" %}
 {% load static %}
-
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/order.css">
+{% endblock links %}
 {% block content %}
 
-<h1> Blood Packet Id:  {{bloodpacket.packetID}} </h1>
-
-<h3> Blood Bank: {{bloodpacket.Blood_bank.name}} <br>
-    City: {{bloodpacket.Blood_bank.city}} <br>
-    Price : Rs {{ bloodpacket.price }}/- <br>
-    Type :{{bloodpacket.get_bloodGroup_display}} <br>
-</h3> 
-<!-- Set up a container element for the button -->
-<!-- Set up a container element for the button -->
-<div id="paypal-button-container"></div>
+<div class="d-flex flex-row justify-content-start align-middle">
+    <div class="container-buy-list d-flex flex-column justify-content-center">
+        <div id="order-details">
+            <div id="id"> Blood Packet Id: {{bloodpacket.packetID}} </div>
+            <div id="details"> <span id="type">Blood Bank</span> : {{bloodpacket.Blood_bank.name}} <br>
+                <span id="type">City</span> : {{bloodpacket.Blood_bank.city}} <br>
+                <span id="type">Price</span> : Rs {{ bloodpacket.price }}/- <br>
+                <span id="type">Type</span> :{{bloodpacket.get_bloodGroup_display}} <br>
+            </div>
+        </div>
+        <!-- Set up a container element for the button -->
+        <!-- Set up a container element for the button -->
+        <div id="paypal-button-container"></div>
+    </div>
+</div>
 
 <!-- Include the PayPal JavaScript SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=AXt9RVZFLkW9EEmAi-WWCOHdrXFnWdfGhTAuEmJVIOUPjWoPzTlD_AAvrDLaMi2tD4PSzlGVJ3Boymfh&currency=USD"></script>
+<script
+    src="https://www.paypal.com/sdk/js?client-id=AXt9RVZFLkW9EEmAi-WWCOHdrXFnWdfGhTAuEmJVIOUPjWoPzTlD_AAvrDLaMi2tD4PSzlGVJ3Boymfh&currency=USD">
+</script>
 
 <script>
-
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -39,30 +47,32 @@
     var total = '{{ bloodpacket.price }}'
     var packetpk = '{{ bloodpacket.pk }}'
 
-    function completeOrder(){
+    function completeOrder() {
         var url = "{% url 'complete' %}"
-        fetch (url, {
+        fetch(url, {
             method: 'POST',
-            headers:{
-                'Content-type':'application/json',
-                'X-CSRFToken':csrftoken,
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
             },
-            body:JSON.stringify({'packetpk': packetpk})
+            body: JSON.stringify({
+                'packetpk': packetpk
+            })
         })
     }
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
 
         style: {
-                color:  'gold',
-                shape:  'pill',
-                label:  'pay',
-                height: 40,
-                size : 'responsive'
-            },
+            color: 'gold',
+            shape: 'pill',
+            label: 'pay',
+            height: 40,
+            size: 'responsive'
+        },
 
         // Set up the transaction
-        createOrder: function(data, actions) {
+        createOrder: function (data, actions) {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
@@ -73,11 +83,12 @@
         },
 
         // Finalize the transaction
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
+        onApprove: function (data, actions) {
+            return actions.order.capture().then(function (details) {
                 // Show a success message to the buyer
                 completeOrder()
-                alert('Transaction completed by ' + details.payer.name.given_name + '!' + 'Click on My orders to view your order.');
+                alert('Transaction completed by ' + details.payer.name.given_name + '!' +
+                    'Click on My orders to view your order.');
             });
         }
 
