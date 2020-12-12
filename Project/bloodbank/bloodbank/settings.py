@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +27,7 @@ SECRET_KEY = 'zaaef7s(m**pgwk)+^prk539*c8sfev!v2)dz(y_upa_u9=@k1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.50', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -87,6 +89,9 @@ DATABASES = {
 }
 
 
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -137,3 +142,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 SWAGGER_SETTINGS = {
     'LOGOUT_URL' : '/logout'
 }
+
+
