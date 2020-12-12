@@ -25,7 +25,8 @@
 
 .table-content{
     height: 8vh;
-    border: 0.5px solid black;
+    border: 1.5px black;
+    border-style: groove;
     justify-content: center;
     text-align: center;
 }
