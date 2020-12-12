@@ -155,4 +155,4 @@ SWAGGER_SETTINGS = {
     'LOGOUT_URL' : '/logout'
 }
 
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
