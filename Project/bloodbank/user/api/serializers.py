@@ -20,7 +20,7 @@ class ChoiceField(serializers.ChoiceField):
 
 class DonorSerializer(serializers.ModelSerializer):
     blood_group = ChoiceField(choices=User.BLOOD_GROUPS)
-    gender = ChoiceField(choices=User.GENDER)
+    
     
     class Meta:
         model = User
