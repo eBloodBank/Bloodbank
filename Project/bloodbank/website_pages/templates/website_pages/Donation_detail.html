@@ -13,10 +13,11 @@
     <meta property="og:description" content="Your description" />
     <meta property="og:image" content="{% static '../../static/website_pages/awp2.png'  %}" />
 </head>
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
 {% endblock links %}
 
 {% block content %}
-
+<div class="container">
 <h1> Donation at: {{object.bloodBank.name}} </h1>
 
 
@@ -55,5 +56,5 @@
     }(document, 'script', 'facebook-jssdk'));
 </script>
 
-
+</div>
 {% endblock content %}

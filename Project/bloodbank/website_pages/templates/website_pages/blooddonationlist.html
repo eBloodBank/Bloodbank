@@ -1,16 +1,41 @@
 {% extends "./base.html" %}
 {% load static %}
 
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
+
+{% endblock links %}
 {% block content %}
-{% for event in bloodDonationEvents %}
-<h1> Camp Name : {{ event.campName }}</h1>
+<div class="container">
 
-<h1>Organized By: <a href="{% url 'bloodbanks-detail' event.organizedBy.id %}"> {{ event.organizedBy.name }} </a></h1>
+    <div class="container2 demo animated">
+        <h1>Blood Donation Events</h1>
 
-
-<h4> Venue: {{event.venue}} </h4><br>
-<h4> Date : {{ event.date }}</h4>
-<h2>------------------------------------------------------------------------------</h2>
-{% endfor %}
-
+    </div>
+    <table class="bloodbank-table">
+        <tr>
+            <th class="table-headers">Camp Name</th>
+            <th class="table-headers">Organized By</th>
+            <th class="table-headers">Venue</th>
+            <th class="table-headers">Time</th>
+            <th class="table-headers">Phone</th>
+            <th class="table-headers">Date</th>
+        </tr>
+        {% for event in bloodDonationEvents %}
+        <tr>
+            <td class="table-content">{{ event.campName }}</h1>
+            </td>
+            <td class="table-content"><a href="{% url 'bloodbanks-detail' event.organizedBy.id %}"> {{ event.organizedBy.name }} </a></td>
+            <td class="table-content">{{event.venue}}</td>
+            <td class="table-content">{{event.time}}</td>
+            <td class="table-content">{{event.contactNo}}</td>
+            <td class="table-content">{{event.date}}</td>
+        </tr>
+        {% empty %}
+            <li class="media content-section">Sorry, no events in this list
+            </li>
+        {% endfor %}
+        
+    </table>
+</div>
 {% endblock content %}

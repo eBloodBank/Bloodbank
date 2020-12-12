@@ -64,3 +64,4 @@ class Donation(models.Model):
     bloodBank = models.ForeignKey(BloodBank, on_delete=models.CASCADE)
     date = models.DateField()
     
+    

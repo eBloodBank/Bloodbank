@@ -1,14 +1,33 @@
 {% extends "./base.html" %}
 {% load static %}
 
+{% block links %}
+<link rel="stylesheet" href="../../static/website_pages/styles/bloodbanklist.css">
+
+{% endblock links %}
 {% block content %}
-{% for donation in donations %}
+<div class="container">
 
-<h1> Donation at: <a href="{% url 'donations-detail' donation.id %}">{{donation.bloodBank.name}} </a> </h1>
+    <div class="container2 demo animated">
+        <h1>My donations</h1>
 
-<h3> Donation On : {{donation.date}} <br>
-</h3>
-
-{% endfor %}
-
+    </div>
+    <table class="bloodbank-table">
+        <tr>
+            <th class="table-headers">Donation At</th>
+            <th class="table-headers">Donation On</th>
+        </tr>
+        {% for donation in donations %}
+        <tr>
+            <td class="table-content"><a href="{% url 'donations-detail' donation.id %}">{{donation.bloodBank.name}} </a></h1>
+            </td>
+            <td class="table-content">{{donation.date}} </a></td>
+        </tr>
+        {% empty %}
+            <li class="media content-section">Sorry, no events in this list
+            </li>
+        {% endfor %}
+        
+    </table>
+</div>
 {% endblock content %}
