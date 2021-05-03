@@ -4,7 +4,7 @@
 
 <center><b>Group ID - 28</b></center>
 
-
+Youtube Demo - https://www.youtube.com/watch?v=X9x91hKCtHU
 
 # Group 28 Members
  1. **Utkarsh Aditya** (Roll No: S20180010182) 
@@ -85,7 +85,6 @@
 - **City wise Donors** : City Filtered list of blood banks
 - **City wise Blood Banks** : City Filtered list of blood banks
 
-Deployed Website - http://52.142.3.6/
 
 For more information regarding the project refer the group 28 artifacts folder.
 
