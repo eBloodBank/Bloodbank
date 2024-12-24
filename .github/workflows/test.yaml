@@ -1,0 +1,20 @@
+name: Print Secret
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  print-secret:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Print GitHub Secret
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+        run: |
+          echo "The secret is: $MY_SECRET"
