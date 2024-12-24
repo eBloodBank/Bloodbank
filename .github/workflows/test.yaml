@@ -15,6 +15,6 @@ jobs:
 
       - name: Print GitHub Secret
         env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
+          MY_SECRET: ${{ secrets.DEPLOYMENT_KEY }}
         run: |
           echo "The secret is: $MY_SECRET"
