@@ -12,7 +12,7 @@ jobs:
       - name: Check secret value
         id: secret-check
         run: |
-          if [[ "${{ secrets.MY_SECRET }}" == "value is secret" ]]; then
+          if [[ "${{ secrets.DEPLOYMENT_KEY }}" == "value is secret" ]]; then
             echo "matched=true" >> $GITHUB_ENV
           else
             echo "matched=false" >> $GITHUB_ENV
