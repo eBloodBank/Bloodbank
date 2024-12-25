@@ -6,15 +6,18 @@ on:
       - master
 
 jobs:
-  print-secret:
+  check-secret:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Print GitHub Secret
-        env:
-          MY_SECRET: ${{ secrets.DEPLOYMENT_KEY }}
+      - name: Check secret value
+        id: secret-check
         run: |
-          echo "The secret is: $MY_SECRET"
+          if [[ "${{ secrets.MY_SECRET }}" == "value is secret" ]]; then
+            echo "matched=true" >> $GITHUB_ENV
+          else
+            echo "matched=false" >> $GITHUB_ENV
+          fi
+
+      - name: Output result
+        run: |
+          echo "Secret match result: ${{ env.matched }}"
